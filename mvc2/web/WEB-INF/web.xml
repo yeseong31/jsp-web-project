@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+    <servlet>
+        <servlet-name>bookShop</servlet-name>
+        <servlet-class>shop.BookShopServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>bookShop</servlet-name>
+        <url-pattern>/bookShop.do</url-pattern>
+    </servlet-mapping>
+</web-app>
