@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+    <servlet>
+        <servlet-name>board</servlet-name>
+        <servlet-class>board.controller.BoardServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>board</servlet-name>
+        <url-pattern>*.do</url-pattern>
+    </servlet-mapping>
+</web-app>
