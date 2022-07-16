@@ -26,7 +26,7 @@
       </tr>
       <tr>
         <th width="20%" bgcolor="yellow">이 름</th>
-        <td><input type="text" name="writer" value="<%=dto.getWriter()%>"></td>
+        <td><input type="text" name="writer" value="<%=dto.getWriter()%>" readonly></td>
       </tr>
       <tr>
         <th width="20%" bgcolor="yellow">제 목</th>

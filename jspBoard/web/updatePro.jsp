@@ -17,6 +17,11 @@
             alert("게시글 수정 성공!! 게시글 상세 페이지로 이동합니다.")
             location.href="content.jsp?num=<%=bdto.getNum()%>"
         </script>
+<%	} else if (res < 0) { %>
+    <script type="text/javascript">
+        alert("잘못된 비밀번호입니다.")
+        location.href = "updateForm.jsp?num=" + <%=bdto.getNum()%>
+    </script>
 <%	} else { %>
         <script type="text/javascript">
             alert("게시글 수정 실패!! 게시글 상세 페이지로 이동합니다.")

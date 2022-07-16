@@ -143,15 +143,18 @@ public class BoardDAO {
     }
 
     public int updateBoard(BoardDTO dto) {
-        String sql = "update BOARD set WRITER=?, SUBJECT=?, EMAIL=?, CONTENT=? where num=?";
+        String sql = "update BOARD set SUBJECT=?, EMAIL=?, CONTENT=? where num=?";
         try {
+            BoardDTO dbdto = getBoard(dto.getNum(), "password");
+            if (!dto.getPasswd().equals(dbdto.getPasswd())) {
+                return -1;
+            }
             con = DriverManager.getConnection(url, user, pass);
             ps = con.prepareStatement(sql);
-            ps.setString(1, dto.getWriter());
-            ps.setString(2, dto.getSubject());
-            ps.setString(3, dto.getEmail());
-            ps.setString(4, dto.getContent());
-            ps.setInt(5, dto.getNum());
+            ps.setString(1, dto.getSubject());
+            ps.setString(2, dto.getEmail());
+            ps.setString(3, dto.getContent());
+            ps.setInt(4, dto.getNum());
             return ps.executeUpdate();
         } catch (SQLException e) {
             System.out.println("updateBoard() ERROR!!");
