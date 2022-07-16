@@ -4,7 +4,7 @@
 				</td>
 			</tr>
 			<tr height="10%">
-				<td colspan="3" align="center">
+				<td colspan="4" align="center">
 					주 말 웹 프 로 젝 트 반
 				</td>
 			</tr>

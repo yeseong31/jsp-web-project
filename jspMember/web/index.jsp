@@ -3,7 +3,7 @@
 <!-- index.jsp -->
 <%@ include file="top.jsp" %>
 <div align="center">
-	<img src="testImage.jpg">
+	<img src="img/testImage.jpg" style="width: 100%">
 </div>
 <%@ include file="bottom.jsp" %>				
 

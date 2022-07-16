@@ -26,7 +26,7 @@ public class MemberDAO {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 		} catch (ClassNotFoundException e) {
-			System.out.println("Oracle 드라이버가 없습니다!!");
+			System.out.println("Oracle Driver ERROR!!");
 		}
 		url = "jdbc:oracle:thin:@localhost:1521:xe";
 		user = "spring07";
@@ -43,7 +43,7 @@ public class MemberDAO {
 			rs = ps.executeQuery();
 			return rs.next();
 		} catch (SQLException e) {
-			System.out.println("checkMember() 메서드 실행 시 오류 발생!!");
+			System.out.println("checkMember() ERROR!!");
 		} finally {
 			try {
 				if (rs != null) rs.close();
@@ -70,7 +70,7 @@ public class MemberDAO {
 			ps.setString(9, dto.getHp3());
 			return ps.executeUpdate();
 		} catch (SQLException e) {
-			System.out.println("insertMember() 메서드 실행 시 오류 발생!!");
+			System.out.println("insertMember() ERROR!!");
 		} finally {
 			try {
 				if (rs != null) rs.close();
@@ -89,7 +89,7 @@ public class MemberDAO {
 			rs = ps.executeQuery();
 			return makeList(rs);
 		} catch (SQLException e) {
-			System.out.println("listMember() 메서드 실행 시 오류 발생!!");
+			System.out.println("listMember() ERROR!!");
 		} finally {
 			try {
 				if (rs != null) rs.close();
@@ -128,7 +128,7 @@ public class MemberDAO {
 			ps.setInt(1, no);
 			return ps.executeUpdate();
 		} catch (SQLException e) {
-			System.out.println("deleteMember() 메서드 실행 시 오류 발생!!");
+			System.out.println("deleteMember() ERROR!!");
 		} finally {
 			try {
 				if (rs != null) rs.close();
@@ -147,7 +147,7 @@ public class MemberDAO {
 			rs = ps.executeQuery();
 			return makeList(rs).get(0);
 		} catch (SQLException e) {
-			System.out.println("getMember() 메서드 실행 시 오류 발생!!");
+			System.out.println("getMember() ERROR!!");
 		} finally {
 			try {
 				if (rs != null) rs.close();
@@ -171,7 +171,7 @@ public class MemberDAO {
 			ps.setInt(6, dto.getNo());
 			return ps.executeUpdate();
 		} catch (SQLException e) {
-			System.out.println("updateMember() 메서드 실행 시 오류 발생!!");
+			System.out.println("updateMember() ERROR!!");
 		} finally {
 			try {
 				if (rs != null) rs.close();
@@ -191,7 +191,7 @@ public class MemberDAO {
 			rs = ps.executeQuery();
 			return makeList(rs);
 		} catch (SQLException e) {
-			System.out.println("findMember() 메서드 실행 시 오류 발생!!");
+			System.out.println("findMember() ERROR!!");
 		} finally {
 			try {
 				if (rs != null) rs.close();

@@ -1,3 +1,4 @@
+<%@ page import="java.sql.SQLException" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <!-- member_input_ok.jsp -->
@@ -12,7 +13,12 @@
         response.sendRedirect("index.jsp");
         return;
     }
-    int res = mbdao.insertMember(mbdto);
+    int res = 0;
+    try {
+        res = mbdao.insertMember(mbdto);
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
     if (res > 0) { %>
         <script type="text/javascript">
             alert("회원가입 성공!! 회원 관리 페이지로 이동합니다.")
