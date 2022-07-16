@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/">
+    <WatchedResource>WEB-INF/web.xml</WatchedResource>
+    <Resource   name="jdbc/oracleXE"
+                auth="Container"
+                type="javax.sql.DataSource"
+                driverClassName="oracle.jdbc.driver.OracleDriver"
+                url="jdbc:oracle:thin:@localhost:1521:xe"
+                username="spring07"
+                password="spring07"
+                maxActive="10"
+                maxIdle="5"
+                maxWait="-1" />
+</Context>
