@@ -111,3 +111,8 @@ $RECYCLE.BIN/
 
 *.iml
 **/.idea/**/*.xml
+
+# image files
+*.jpg
+*.png
+*.gif
