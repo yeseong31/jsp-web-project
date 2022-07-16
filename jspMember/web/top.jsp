@@ -20,7 +20,6 @@
 				<% } else { %>
 					<a href="login.jsp">로그인</a>
 				<% } %>
-				<a href="login.jsp">로그인</a>
 			</th>
 			<th><a href="memberSsn.jsp">회원가입</a></th>
 			<th><a href="memberAll.jsp">회원보기</a></th>
