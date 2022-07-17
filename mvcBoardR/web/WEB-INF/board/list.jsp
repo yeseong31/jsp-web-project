@@ -11,7 +11,7 @@
 	<table border="0" width="800px">
 		<tr style="background-color: yellow">
 			<td align="right">
-				<a href="writeForm.jsp">글쓰기</a>
+				<a href="board_write.do">글쓰기</a>
 			</td>
 		</tr>	
 	</table>
@@ -34,7 +34,7 @@
 			for (BoardDTO dto : list) { %>
 				<tr>
 					<td><%=dto.getNum()%></td>
-					<td><a href="content.jsp?num=<%=dto.getNum()%>"><%=dto.getSubject()%></a></td>
+					<td><a href="board_content.do?num=<%=dto.getNum()%>"><%=dto.getSubject()%></a></td>
 					<td><%=dto.getWriter()%></td>
 					<td><%=dto.getReg_date()%></td>
 					<td><%=dto.getReadcount()%></td>
