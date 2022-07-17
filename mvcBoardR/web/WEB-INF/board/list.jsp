@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"
-		 pageEncoding="UTF-8" import="java.util.*, board.dto.BoardDTO"%>
+		 pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- list.jsp -->
 <html>
 <head>
@@ -24,24 +25,19 @@
 			<th>조회수</th>
 			<th>IP</th>
 		</tr>
-<%		List<BoardDTO> list = (List) request.getAttribute("listBoard");
-		if (list == null || list.size() == 0) { %>
+		<c:if test="${empty listBoard}">
+			<tr><td colspan="6">등록된 게시글이 없습니다.</td></tr>
+		</c:if>
+		<c:forEach var="dto" items="${listBoard}">
 			<tr>
-				<td colspan="6">등록된 게시글이 없습니다.</td>
+				<td>${dto.num}</td>
+				<td><a href="board_content.do?num=${dto.num}">${dto.subject}</a></td>
+				<td>${dto.writer}</td>
+				<td>${dto.reg_date}</td>
+				<td>${dto.readcount}</td>
+				<td>${dto.ip}</td>
 			</tr>
-<%		    return;
-		} else {
-			for (BoardDTO dto : list) { %>
-				<tr>
-					<td><%=dto.getNum()%></td>
-					<td><a href="board_content.do?num=<%=dto.getNum()%>"><%=dto.getSubject()%></a></td>
-					<td><%=dto.getWriter()%></td>
-					<td><%=dto.getReg_date()%></td>
-					<td><%=dto.getReadcount()%></td>
-					<td><%=dto.getIp()%></td>
-				</tr>
-<% 			}
-		} %>
+		</c:forEach>
 	</table>
 </div>
 </body>

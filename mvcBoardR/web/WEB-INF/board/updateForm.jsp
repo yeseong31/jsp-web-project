@@ -1,9 +1,6 @@
-<%@ page import="board.dto.BoardDTO" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- updateForm.jsp -->
-<%
-  BoardDTO dto = (BoardDTO) request.getAttribute("dto");
-%>
 <html>
 <head>
   <title>글수정</title>
@@ -12,28 +9,28 @@
 <div align="center">
   <b>글수정</b><br/><br/>
   <form name="f" action="board_updatePro.do" method="post" onsubmit="return checkBoard()">
-    <input type="hidden" name="num" value="<%=dto.getNum()%>">
+    <input type="hidden" name="num" value="${dto.num}">
     <table border="1" width="800px">
       <tr bgcolor="yellow">
         <th colspan="2">글 쓰 기</th>
       </tr>
       <tr>
         <th width="20%" bgcolor="yellow">이 름</th>
-        <td><input type="text" name="writer" value="<%=dto.getWriter()%>" readonly></td>
+        <td><input type="text" name="writer" value="${dto.writer}" readonly></td>
       </tr>
       <tr>
         <th width="20%" bgcolor="yellow">제 목</th>
-        <td><input type="text" name="subject" value="<%=dto.getSubject()%>"></td>
+        <td><input type="text" name="subject" value="${dto.subject}"></td>
       </tr>
       <tr>
         <th width="20%" bgcolor="yellow">Email</th>
-        <td><input type="text" name="email"  value="<%=dto.getEmail()%>"></td>
+        <td><input type="text" name="email"  value="${dto.email}"></td>
       </tr>
       <tr>
         <th width="20%" bgcolor="yellow">내 용</th>
         <td>
           <label>
-            <textarea name="content" rows="8" cols="50"><%=dto.getContent()%></textarea>
+            <textarea name="content" rows="8" cols="50">${dto.content}</textarea>
           </label>
         </td>
       </tr>
