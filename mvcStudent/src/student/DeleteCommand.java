@@ -16,7 +16,7 @@ public class DeleteCommand implements CommandIf {
             url = "student.do?command=list";
         } else {
             msg = "학생 삭제 실패!! 학생 관리 페이지로 이동합니다.";
-            url = "student.do?command=student";
+            url = "student.do?command=index";
         }
         req.setAttribute("msg", msg);
         req.setAttribute("url", url);
