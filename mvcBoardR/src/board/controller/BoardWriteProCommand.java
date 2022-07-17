@@ -21,11 +21,14 @@ public class BoardWriteProCommand implements CommandIf {
         BoardDAO dao = new BoardDAOImpl();
         int res = dao.insertBoard(dto);
 
-        if (res > 0)
+        if (res > 0) {
             req.setAttribute("msg", "게시글 등록 성공!! 게시글 목록 페이지로 이동합니다.");
-        else
+            req.setAttribute("url", "board_list.do");
+        }
+        else {
             req.setAttribute("msg", "게시글 등록 실패!! 게시글 목록 페이지로 이동합니다.");
-        req.setAttribute("url", "board_list.do");
+            req.setAttribute("url", "board_write.do");
+        }
         return "message.jsp";
     }
 }
