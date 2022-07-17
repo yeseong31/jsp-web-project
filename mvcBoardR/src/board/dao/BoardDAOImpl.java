@@ -10,8 +10,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class 	BoardDAOImpl implements BoardDAO {
-	
+public class BoardDAOImpl implements BoardDAO {
 	private Connection con;
     private PreparedStatement ps;
     private ResultSet rs;
@@ -25,6 +24,7 @@ public class 	BoardDAOImpl implements BoardDAO {
     		System.out.println("lookup 실패: " + e.getMessage());
     	}
     }
+
 	protected List<BoardDTO> makeList(ResultSet rs) throws SQLException {
 		List<BoardDTO> list = new ArrayList<>();
 		while (rs.next()) {
@@ -168,5 +168,4 @@ public class 	BoardDAOImpl implements BoardDAO {
 		}
 		return 0;
 	}
-
 }
