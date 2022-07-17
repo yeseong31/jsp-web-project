@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*, student.*"%>
+<%@ page contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- list.jsp -->
 <html>
 <head>
@@ -16,21 +17,18 @@
 				<th>학생명</th>
 				<th>학급명</th>
 			</tr>
-<%
-		 	List<StudentDTO> list = (List) request.getAttribute("listStudent");
-		 	if (list == null || list.size() == 0) { %>
+			<c:if test="${empty listStudent}">
 		 		<tr>
 		 			<td colspan="3">등록된 학생이 없습니다.</td>
-		 		</tr>	
-<%			} else {
-				for (StudentDTO dto: list) { %>
+		 		</tr>
+			</c:if>
+			<c:forEach var="dto" items="${listStudent}">
 				<tr>
-					<td><%=dto.getId() %></td>
-					<td><%=dto.getName() %></td>
-					<td><%=dto.getCname() %></td>
-				</tr> 
-<%				}
-			} %>
+					<td>${dto.id}</td>
+					<td>${dto.name}</td>
+					<td>${dto.cname}</td>
+				</tr>
+			</c:forEach>
 		</table>
 	</div>
 </body>
