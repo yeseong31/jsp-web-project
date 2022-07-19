@@ -2,6 +2,6 @@
     pageEncoding="UTF-8"%>
 <!-- message.jsp -->
 <script type="text/javascript">
-	alert("${msg}>")
+	alert("${msg}")
 	location.href="${url}"
 </script>
