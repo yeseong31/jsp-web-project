@@ -16,8 +16,8 @@
             <tr style="height: 40px">
                 <th style="width: 20%"><a href="cate_input.mall">카테고리 등록</a></th>
                 <th style="width: 20%"><a href="cate_list.mall">카테고리 목록</a></th>
-                <th style="width: 20%">상품등록</th>
-                <th style="width: 20%">상품목록</th>
+                <th style="width: 20%"><a href="prod_input.mall">상품등록</a></th>
+                <th style="width: 20%"><a href="prod_list.mall">상품목록</a></th>
                 <th style="width: 20%">쇼핑몰홈</th>
             </tr>
             <tr style="height: 520px">
