@@ -1,6 +1,6 @@
 package myshop.dao;
 
-import myshop.dto.CategoryDTO;
+import com.oreilly.servlet.MultipartRequest;
 import myshop.dto.ProductDTO;
 
 import javax.naming.Context;
@@ -50,20 +50,21 @@ public class ProductDAOImpl implements ProductDAO {
     }
 
     @Override
-    public int insertProd(ProductDTO dto) {
+    public int insertProd(MultipartRequest mr) {
         String sql = "insert into PRODUCT values (PROD_SEQ.nextval,?,?,?,?,?,?,?,?,?,sysdate)";
         try {
             con = ds.getConnection();
             ps = con.prepareStatement(sql);
-            ps.setString(1, dto.getPname());
-            ps.setString(2, dto.getPcategory_fk());
-            ps.setString(3, dto.getPcompany());
-            ps.setString(4, dto.getPimage());
-            ps.setInt(5, dto.getPqty());
-            ps.setInt(6, dto.getPrice());
-            ps.setString(7, dto.getPspec());
-            ps.setString(8, dto.getPcontents());
-            ps.setInt(9, dto.getPoint());
+            ps.setString(1, mr.getParameter("name"));
+            ps.setString(2,
+                    mr.getParameter("pcategory_fk") + mr.getParameter("code"));
+            ps.setString(3, mr.getParameter("company"));
+            ps.setString(4, mr.getFilesystemName("filename"));
+            ps.setInt(5, Integer.parseInt(mr.getParameter("qty")));
+            ps.setInt(6, Integer.parseInt(mr.getParameter("price")));
+            ps.setString(7, mr.getParameter("specs"));
+            ps.setString(8, mr.getParameter("content"));
+            ps.setInt(9, Integer.parseInt(mr.getParameter("point")));
             return ps.executeUpdate();
         } catch (SQLException e) {
             System.out.println("insertProd() ERROR!!");
@@ -117,7 +118,54 @@ public class ProductDAOImpl implements ProductDAO {
     }
 
     @Override
-    public int updateProd(ProductDTO dto) {
+    public int updateProd(MultipartRequest mr) {
+        String sql = "update PRODUCT set PNAME=?, PCOMPANY=?, PIMAGE=?, PQTY=?, PRICE=?, PSPEC=?, PCONTENTS=?, POINT=? where PNUM=?";
+        try {
+            con = ds.getConnection();
+            ps = con.prepareStatement(sql);
+            String img = mr.getFilesystemName("filename");
+            if (img == null)
+                img = mr.getFilesystemName("filename2")
+;            ps.setString(1, mr.getParameter("name"));
+            ps.setString(2, mr.getParameter("company"));
+            ps.setString(3, img);
+            ps.setInt(4, Integer.parseInt(mr.getParameter("qty")));
+            ps.setInt(5, Integer.parseInt(mr.getParameter("price")));
+            ps.setString(6, mr.getParameter("specs"));
+            ps.setString(7, mr.getParameter("content"));
+            ps.setInt(8, Integer.parseInt(mr.getParameter("point")));
+            ps.setInt(9, Integer.parseInt(mr.getParameter("num")));
+            return ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("updateProd() ERROR!!");
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (ps != null) ps.close();
+                if (con != null) con.close();
+            } catch (SQLException ignored) {}
+        }
         return 0;
+    }
+
+    @Override
+    public ProductDTO getProd(int pnum) {
+        String sql = "select * from PRODUCT where pnum = ?";
+        try {
+            con = ds.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, pnum);
+            rs = ps.executeQuery();
+            return makeList(rs).get(0);
+        } catch (SQLException e) {
+            System.out.println("getProd() ERROR!!");
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (ps != null) ps.close();
+                if (con != null) con.close();
+            } catch (SQLException ignored) {}
+        }
+        return null;
     }
 }

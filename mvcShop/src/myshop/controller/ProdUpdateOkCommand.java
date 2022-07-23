@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class ProdInputOkCommand implements CommandIf {
+public class ProdUpdateOkCommand implements CommandIf {
     @Override
     public Object processCommand(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         MultipartRequest mr;
@@ -19,13 +19,13 @@ public class ProdInputOkCommand implements CommandIf {
         try {
             mr = new MultipartRequest(req, upPath, len, "UTF-8");
             ProductDAO dao = new ProductDAOImpl();
-            int res = dao.insertProd(mr);
+            int res = dao.updateProd(mr);
             if (res > 0) {
-                req.setAttribute("msg", "상품 등록 성공!! 상품 목록 페이지로 이동합니다.");
+                req.setAttribute("msg", "상품 수정 성공!! 상품 목록 페이지로 이동합니다.");
                 req.setAttribute("url", "prod_list.mall");
             } else {
-                req.setAttribute("msg", "상품 등록 실패!! 상품 목록 페이지로 이동합니다.");
-                req.setAttribute("url", "prod_input.mall");
+                req.setAttribute("msg", "상품 수정 실패!! 상품 목록 페이지로 이동합니다.");
+                req.setAttribute("url", "prod_update.mall?pnum=" + mr.getParameter("pnum"));
             }
         } catch (IOException e) {
             e.printStackTrace();

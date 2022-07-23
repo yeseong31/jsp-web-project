@@ -25,13 +25,17 @@
             <tr>
                 <td style="text-align: left; padding-left: 8px">${dto.pnum}</td>
                 <td style="text-align: center">${dto.pcategory_fk}</td>
-                <td style="text-align: center">${dto.pname}</td>
-                <td style="text-align: center">${dto.pimage}</td>
+                <td style="text-align: center">
+                    <a href="prod_view.mall?pnum=${dto.pnum}">${dto.pname}</a>
+                </td>
+                <td style="text-align: center">
+                    <img src="${upPath}${dto.pimage}" style="width: 40px; height: 40px" alt="image">
+                </td>
                 <td style="text-align: right; padding-right: 8px">${dto.price}</td>
                 <td style="text-align: center">${dto.pcompany}</td>
                 <td style="text-align: right; padding-right: 8px">${dto.pqty}</td>
                 <td style="text-align: center">
-                    <a href="#">수정</a>
+                    <a href="prod_update.mall?pnum=${dto.pnum}">수정</a>
                     <a href="prod_delete.mall?pnum=${dto.pnum}">삭제</a>
                 </td>
             </tr>
