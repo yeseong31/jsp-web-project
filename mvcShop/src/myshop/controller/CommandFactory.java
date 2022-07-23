@@ -18,6 +18,7 @@ public class CommandFactory {
             case "/prod_input.mall" -> cmdIf = new ProdInputCommand();
             case "/prod_input_ok.mall" -> cmdIf = new ProdInputOkCommand();
             case "/prod_list.mall" -> cmdIf = new ProdListCommand();
+            case "/prod_delete.mall" -> cmdIf = new ProdDeleteCommand();
         }
         return cmdIf;
     }

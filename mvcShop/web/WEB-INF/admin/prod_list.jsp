@@ -32,7 +32,7 @@
                 <td style="text-align: right; padding-right: 8px">${dto.pqty}</td>
                 <td style="text-align: center">
                     <a href="#">수정</a>
-                    <a href="#">삭제</a>
+                    <a href="prod_delete.mall?pnum=${dto.pnum}">삭제</a>
                 </td>
             </tr>
         </c:forEach>
