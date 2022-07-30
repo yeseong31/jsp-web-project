@@ -74,6 +74,13 @@
             <version>2.0.7</version>
         </dependency>
 
+        <!-- JDBC -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${org.springframework-version}</version>
+        </dependency>
+
     </dependencies>
 
 </project>
