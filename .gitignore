@@ -116,3 +116,5 @@ $RECYCLE.BIN/
 *.jpg
 *.png
 *.gif
+
+db.properties

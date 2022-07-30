@@ -21,7 +21,7 @@ public class StudentMapper {
 			Reader reader = Resources.getResourceAsReader(resource);
 			sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
 		} catch (IOException e) {
-			throw new RuntimeException("DB 연결 오류 발생!!" + e.getMessage());
+			throw new RuntimeException("Something bad happened while building the SqlMapClient instance." + e, e);
 		}
 	}
 	
@@ -33,8 +33,8 @@ public class StudentMapper {
 	
 	public static int insertStudent(StudentDTO dto) {
 		try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-			int res = sqlSession.insert("insertStudent", dto);
-			sqlSession.commit();  // 실제로 데이터가 삽입이 됨. (commit을 하지 않으면 변경 사항이 반영되지 않음)
+			int res = sqlSession.update("insertStudent", dto);
+			sqlSession.commit();
 			return res;
 		}
 	}

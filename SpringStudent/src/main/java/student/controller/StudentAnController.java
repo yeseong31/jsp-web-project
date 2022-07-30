@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import student.dao.StudentDAO;
 import student.dto.StudentDTO;
+import student.mybatis.StudentMapper;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -14,8 +15,8 @@ import java.util.List;
 @Controller
 public class StudentAnController {
 
-    @Autowired
-    private StudentDAO studentDAO;
+//    @Autowired
+//    private StudentDAO studentDAO;
 
     @RequestMapping("/student.do")
     public String student() {
@@ -24,14 +25,16 @@ public class StudentAnController {
 
     @RequestMapping("/list.do")
     public String listStudent(HttpServletRequest req) {
-        List<StudentDTO> list = studentDAO.listStudent();
+//        List<StudentDTO> list = studentDAO.listStudent();
+        List<StudentDTO> list = StudentMapper.listStudent();
         req.setAttribute("listStudent", list);
-        return "student/list";
+        return "/student/list";
     }
 
     @RequestMapping("/insert.do")
     public String insertStudent(HttpServletRequest req, @ModelAttribute StudentDTO dto) {
-        int res = studentDAO.insertStudent(dto);
+//        int res = studentDAO.insertStudent(dto);
+        int res = StudentMapper.insertStudent(dto);
         if (res > 0) {
             req.setAttribute("msg", "학생 등록 성공! 학생 목록 페이지로 이동합니다.");
             req.setAttribute("url", "list.do");
@@ -39,12 +42,13 @@ public class StudentAnController {
             req.setAttribute("msg", "학생 등록 실패... Index 페이지로 이동합니다.");
             req.setAttribute("url", "student.do");
         }
-        return "student/message";
+        return "/student/message";
     }
 
     @RequestMapping("/delete.do")
     public String studentDelete(HttpServletRequest req, @RequestParam String id) {
-         int res = studentDAO.deleteStudent(id);
+//         int res = studentDAO.deleteStudent(id);
+        int res = StudentMapper.deleteStudent(id);
         if (res > 0) {
             req.setAttribute("msg", "학생 삭제 성공! 학생 목록 페이지로 이동합니다.");
             req.setAttribute("url", "list.do");
@@ -52,14 +56,15 @@ public class StudentAnController {
             req.setAttribute("msg", "학생 삭제 실패... Index 페이지로 이동합니다.");
             req.setAttribute("url", "student.do");
         }
-        return "student/message";
+        return "/student/message";
     }
 
     @RequestMapping("/find.do")
     public String studentFind(HttpServletRequest req, @RequestParam String name) {
-         List<StudentDTO> list = studentDAO.findStudent(name);
+//        List<StudentDTO> list = studentDAO.findStudent(name);
+        List<StudentDTO> list = StudentMapper.findStudent(name);
         req.setAttribute("listStudent", list);
-        return "student/list";
+        return "/student/list";
     }
 
 }

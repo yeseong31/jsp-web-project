@@ -1,8 +1,7 @@
 package board.controller;
 
-import board.dao.BoardDAO;
 import board.dto.BoardDTO;
-import org.springframework.beans.factory.annotation.Autowired;
+import board.mybatis.BoardMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -17,13 +16,10 @@ import java.util.Map;
 
 @Controller
 public class BoardController {
-
-	@Autowired
-	private BoardDAO boardDAO;
 	
 	@RequestMapping("/board_list.do")
 	public String BoardList(HttpServletRequest req) {
-		List<BoardDTO> list = boardDAO.listBoard();
+		List<BoardDTO> list = BoardMapper.listBoard();
 		req.setAttribute("listBoard", list);
 		return "board/list";
 	}
@@ -36,7 +32,7 @@ public class BoardController {
 	@RequestMapping(value="/board_write.do", method=RequestMethod.POST)
 	public String BoardWritePro(HttpServletRequest req, @ModelAttribute BoardDTO dto) {
 		dto.setIp(req.getRemoteAddr());
-		int res = boardDAO.insertBoard(dto);
+		int res = BoardMapper.insertBoard(dto);
 		if (res > 0) {
 			req.setAttribute("msg", "게시글 등록 성공! 게시글 목록 페이지로 이동합니다.");
 			req.setAttribute("url", "board_list.do");
@@ -49,15 +45,14 @@ public class BoardController {
 	
 	@RequestMapping("/board_content.do")
 	public ModelAndView BoardContent(@RequestParam int num) {
-		BoardDTO dto = boardDAO.getBoard(num, "content");
+		BoardDTO dto = BoardMapper.getBoard(num, "content");
 		return new ModelAndView("board/content", "getBoard", dto);
 	}
 	
 	@RequestMapping(value="/board_update.do", method=RequestMethod.GET)
-	public String BoardUpdateForm(HttpServletRequest req, @RequestParam int num) {
-		BoardDTO dto = boardDAO.getBoard(num, "update");
-		req.setAttribute("getBoard", dto);
-		return "board/updateForm";
+	public ModelAndView BoardUpdateForm(@RequestParam int num) {
+		BoardDTO dto = BoardMapper.getBoard(num, "update");
+		return new ModelAndView("board/updateForm", "getBoard", dto);
 	}
 	
 	@RequestMapping(value="/board_update.do", method=RequestMethod.POST)
@@ -67,7 +62,7 @@ public class BoardController {
 			dto.setNum(0);
 		}
 		
-		 int res = boardDAO.updateBoard(dto);
+		 int res = BoardMapper.updateBoard(dto);
 		if (res > 0) {
 			req.setAttribute("msg", "게시글 수정 성공! 게시글 목록 페이지로 이동합니다.");
 			req.setAttribute("url", "board_list.do");
@@ -92,7 +87,7 @@ public class BoardController {
 		// Map 타입으로 param 값을 받으면 parameter 명이 key가 되고, parameter 값이 value가 된다.
 		 int num = Integer.parseInt(params.get("num"));
 		 String passwd = params.get("passwd");
-		 int res = boardDAO.deleteBoard(num, passwd);
+		 int res = BoardMapper.deleteBoard(num, passwd);
 
 		if (res > 0) {
 			req.setAttribute("msg", "게시글 삭제 성공! 게시글 목록 페이지로 이동합니다.");

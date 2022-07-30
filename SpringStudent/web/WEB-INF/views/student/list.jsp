@@ -1,25 +1,24 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!-- list.jsp -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-	<title>ÇÐ»ýº¸±â</title>
+	<title>í•™ìƒë³´ê¸°</title>
 </head>
 <body>
 	<div align="center">
 		<hr color="green" width="300">
-		<h2>ÇÐ »ý ¸ñ ·Ï º¸ ±â</h2>
+		<h2>í•™ ìƒ ëª© ë¡ ë³´ ê¸°</h2>
 		<hr color="green" width="300">
 		<table border="1" width="500">
 			<tr>
-				<th>¾ÆÀÌµð</th>
-				<th>ÇÐ»ý¸í</th>
-				<th>ÇÐ±Þ¸í</th>
+				<th>ì•„ì´ë””</th>
+				<th>í•™ìƒëª…</th>
+				<th>í•™ê¸‰ëª…</th>
 			</tr>
 		<c:if test="${empty listStudent}">
 			<tr>
-				<td colspan="3">µî·ÏµÈ ÇÐ»ýÀÌ ¾ø½À´Ï´Ù.</td>
+				<td colspan="3">ë“±ë¡ëœ í•™ìƒì´ ì—†ìŠµë‹ˆë‹¤.</td>
 			</tr>	
 		</c:if>	
 		<c:forEach var="dto" items="${listStudent}">	
