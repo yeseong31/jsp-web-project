@@ -6,6 +6,6 @@
   </head>
   <body>
     <a href="admin.mall">쇼핑몰 관리자 페이지로 이동</a><br>
-    <a href="">쇼핑몰 사용자 페이지로 이동</a>
+    <a href="mall.mall">쇼핑몰 사용자 페이지로 이동</a>
   </body>
 </html>

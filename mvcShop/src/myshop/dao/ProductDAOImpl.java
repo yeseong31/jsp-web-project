@@ -1,6 +1,7 @@
 package myshop.dao;
 
 import com.oreilly.servlet.MultipartRequest;
+import myshop.dto.CategoryDTO;
 import myshop.dto.ProductDTO;
 
 import javax.naming.Context;
@@ -159,6 +160,48 @@ public class ProductDAOImpl implements ProductDAO {
             return makeList(rs).get(0);
         } catch (SQLException e) {
             System.out.println("getProd() ERROR!!");
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (ps != null) ps.close();
+                if (con != null) con.close();
+            } catch (SQLException ignored) {}
+        }
+        return null;
+    }
+
+    @Override
+    public List<ProductDTO> selectBySpec(String spec) {
+        String sql = "select * from PRODUCT where PSPEC = ?";
+        try {
+            con = ds.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, spec);
+            rs = ps.executeQuery();
+            return makeList(rs);
+        } catch (SQLException e) {
+            System.out.println("selectBySpec() ERROR!!");
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (ps != null) ps.close();
+                if (con != null) con.close();
+            } catch (SQLException ignored) {}
+        }
+        return null;
+    }
+
+    @Override
+    public List<ProductDTO> getListProdByCateCode(String code) {
+        String sql = "select * from PRODUCT where PCATEGORY_FK like ?";
+        try {
+            con = ds.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, code + '%');
+            rs = ps.executeQuery();
+            return makeList(rs);
+        } catch (SQLException e) {
+            System.out.println("getListProdByCateCode() ERROR!!");
         } finally {
             try {
                 if (rs != null) rs.close();

@@ -22,6 +22,9 @@ public class CommandFactory {
             case "/prod_view.mall" -> cmdIf = new ProdViewCommand();
             case "/prod_update.mall" -> cmdIf = new ProdUpdateCommand();
             case "/prod_update_ok.mall" -> cmdIf = new ProdUpdateOkCommand();
+            case "/mall.mall" -> cmdIf = new MallCommand();
+            case "/cgProdList.mall" -> cmdIf = new MallCgProdListCommand();
+            case "/prodView.mall" -> cmdIf = new MallProdViewCommand();
         }
         return cmdIf;
     }

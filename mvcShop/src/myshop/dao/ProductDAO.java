@@ -10,4 +10,6 @@ public interface ProductDAO {
     int deleteProd(int pnum);
     int updateProd(MultipartRequest mr);
     ProductDTO getProd(int pnum);
+    List<ProductDTO> selectBySpec(String spec);
+    List<ProductDTO> getListProdByCateCode(String code);
 }
