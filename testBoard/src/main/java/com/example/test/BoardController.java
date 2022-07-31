@@ -66,9 +66,7 @@ public class BoardController {
 
     @RequestMapping(value = "/board_update.do", method = RequestMethod.POST)
     public String board_update_pro(HttpServletRequest req, @ModelAttribute BoardDTO dto, BindingResult result) {
-        if (result.hasErrors()) {
-            dto.setNum(0);
-        }
+        if (result.hasErrors()) dto.setNum(0);
         int res = boardMapper.updateBoard(dto);
         if (res > 0) {
             req.setAttribute("msg", "게시글 수정 성공! 게시글 목록 페이지로 이동합니다.");

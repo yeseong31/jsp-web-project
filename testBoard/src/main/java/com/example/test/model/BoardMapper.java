@@ -28,7 +28,7 @@ public class BoardMapper {
     }
 
     public int deleteBoard(int num, String passwd) {
-        BoardDTO dto = sqlSession.selectOne("getBoard", num);
+        BoardDTO dto = getBoard(num, "password");
         int res = -1;
         if (dto.getPasswd().equals(passwd))
             res = sqlSession.delete("deleteBoard", num);
@@ -36,9 +36,9 @@ public class BoardMapper {
     }
 
     public int updateBoard(BoardDTO dto) {
-        BoardDTO dbdto = getBoard(dto.getNum(), "password");
+        BoardDTO tmpBoard = getBoard(dto.getNum(), "password");
         int res = -1;
-        if (dbdto.getPasswd().equals(dto.getPasswd()))
+        if (tmpBoard.getPasswd().equals(dto.getPasswd()))
             res = sqlSession.update("updateBoard", dto);
         return res;
     }
