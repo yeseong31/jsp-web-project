@@ -48,7 +48,7 @@
                 <td>${dto.joindate}</td>
                 <td>
                     <a href="member_update.do?no=${dto.no}">수정</a>
-                    <a href="member_delete.jsp?no=${dto.no}">삭제</a>
+                    <a href="member_delete.do?no=${dto.no}">삭제</a>
                 </td>
             </tr>
         </c:forEach>
