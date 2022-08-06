@@ -1,4 +1,4 @@
-package com.example.proj.mapper;
+package com.example.proj.service;
 
 import com.example.proj.dto.CartypeDTO;
 import org.apache.ibatis.session.SqlSession;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class CartypeMapper {
+public class CartypeServiceImpl implements CartypeService {
 
     @Autowired
     private SqlSession sqlSession;
