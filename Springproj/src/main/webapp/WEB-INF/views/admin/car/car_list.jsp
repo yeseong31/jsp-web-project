@@ -12,7 +12,6 @@
                 <th scope="col" class="text-center">#</th>
                 <th scope="col" style="padding-left: 30px">이름</th>
                 <th scope="col" class="text-center">코드</th>
-                <th scope="col" style="width: 40%; padding-left: 30px">설명</th>
                 <th scope="col" class="text-center">수정 / 삭제</th>
             </tr>
             </thead>
@@ -27,7 +26,6 @@
                     <td class="text-center">${dto.id}</td>
                     <td style="padding-left: 30px"><a href="<c:url value="/car/detail?id=${dto.id}"/>">${dto.name}</a></td>
                     <td class="text-center">${dto.code}</td>
-                    <td style="padding-left: 30px; text-overflow: ellipsis">...</td>
                     <td class="text-center">
                         <button type="button" class="btn btn-outline-secondary btn-sm"
                                 onclick="location.href='/admin/car/update?id=${dto.id}'">수정</button>
