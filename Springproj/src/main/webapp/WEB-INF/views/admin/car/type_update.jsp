@@ -11,26 +11,34 @@
         <thead></thead>
         <tbody>
         <tr>
-          <th scope="col" class="text-center">이름</th>
+          <th scope="col" class="text-center" style="width: 150px">이름</th>
           <th>
-            <label>
-              <input type="text" name="name" value="${getCartype.name}">
+            <label style="width: 100%">
+              <input type="text" name="name" value="${getCartype.name}"
+                  style="width: 100%; height: 36px; font-size: 15px; border: 1px solid #dbdbdb;
+                                    border-radius: 6px; padding: 9px 0 7px 8px; background-color: #FAFAFA;">
             </label>
           </th>
         </tr>
         <tr>
           <th scope="col" class="text-center">코드</th>
           <th>
-            <label>
-              <input type="text" name="code" value="${getCartype.code}">
+            <label style="width: 100%">
+              <input type="text" name="code" value="${getCartype.code}"
+                     style="width: 100%; height: 36px; font-size: 15px; border: 1px solid #dbdbdb;
+                                    border-radius: 6px; padding: 9px 0 7px 8px; background-color: #FAFAFA;">
             </label>
           </th>
         </tr>
         <tr>
           <th scope="col" class="text-center">설명</th>
           <th>
-            <label>
-              <input type="text" name="description" value="${getCartype.description}">
+            <label style="width: 100%">
+              <textarea id="newTweetContent" name="description" placeholder="설명을 입력해 주세요"
+                        style="width: 100%; font-size: 15px;
+                            border: 1px solid #dbdbdb; border-radius: 6px; padding: 9px 8px 7px 8px;
+                            background-color: #FAFAFA; resize: none" rows="10"
+                        onkeydown="resize(this)" onkeyup="resize(this)">${getCartype.description}</textarea>
             </label>
           </th>
         </tr>
@@ -55,6 +63,11 @@
       return false;
     }
     return true;
+  }
+
+  function resize(obj) {
+    obj.style.height = '1px';
+    obj.style.height = (12 + obj.scrollHeight) + 'px';
   }
 </script>
 
