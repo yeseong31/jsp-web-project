@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cartype.mybatis.CartypeMapper">
-    <select id="listCartype" resultType="CartypeDTO">
+    <select id="getCartypeList" resultType="CartypeDTO">
         select * from CARTYPE order by id desc
     </select>
     <insert id="insertCartype" parameterType="CartypeDTO">
@@ -13,7 +13,7 @@
         select * from CARTYPE where id = #{id}
     </select>
     <update id="updateCartype" parameterType="CartypeDTO">
-        update CARTYPE set description=#{description} where id=#{id}
+        update CARTYPE set name=#{name}, code=#{code}, description=#{description}, modDate=sysdate where id=#{id}
     </update>
     <delete id="deleteCartype" parameterType="int">
         delete from CARTYPE where id = #{id}

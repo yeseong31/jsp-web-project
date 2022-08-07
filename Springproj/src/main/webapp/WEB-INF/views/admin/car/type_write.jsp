@@ -1,11 +1,11 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- type_write.jsp -->
-<%@ include file="../top.jsp" %>
+<%@ include file="../../top.jsp" %>
 
 <div class="container">
     <h1 class="display-6 text-center">차종 등록</h1>
-    <form name="f" action="/car/type_write" method="post" onsubmit="return checkBoard()">
+    <form name="f" action="<c:url value="/admin/car/type_write"/>" method="post" onsubmit="return checkBoard()">
         <div class="row mt-4">
             <table class="table">
                 <thead></thead>
@@ -63,4 +63,4 @@
     }
 </script>
 
-<%@ include file="../bottom.jsp" %>
+<%@ include file="../../bottom.jsp" %>

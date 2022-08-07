@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface CartypeService {
 
-    List<CartypeDTO> listCartype();
+    List<CartypeDTO> getCartypeList();
 
     CartypeDTO getCartype(String id);
 

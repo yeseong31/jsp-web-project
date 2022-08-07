@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="car.mybatis.CarMapper">
+    <select id="getCarList" resultType="CarDTO">
+        select * from CAR order by id desc
+    </select>
+    <insert id="insertCar" parameterType="CarDTO">
+        insert into CAR values (CARTYPE_SEQ.nextval, #{name}, #{code}, #{description}, #{price},
+                                #{passengers}, #{luggages}, #{doors}, #{transmission}, sysdate, null, 6)
+    </insert>
+    <select id="getCar" parameterType="int" resultType="CarDTO">
+        select * from CAR where id = #{id}
+    </select>
+    <update id="updateCar" parameterType="CarDTO">
+        update CAR set name=#{name}, code=#{code}, description=#{description}, price=#{price},
+                       passengers=#{passengers}, luggages=#{luggages}, doors=#{doors},
+                       transmission=#{transmission}, modDate=sysdate where id=#{id}
+    </update>
+    <delete id="deleteCar" parameterType="int">
+        delete from CAR where id=#{id}
+    </delete>
+</mapper>

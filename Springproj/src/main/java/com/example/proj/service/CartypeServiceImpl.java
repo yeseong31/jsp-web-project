@@ -11,10 +11,10 @@ import java.util.List;
 public class CartypeServiceImpl implements CartypeService {
 
     @Autowired
-    private SqlSession sqlSession;
+    SqlSession sqlSession;
 
-    public List<CartypeDTO> listCartype() {
-        return sqlSession.selectList("listCartype");
+    public List<CartypeDTO> getCartypeList() {
+        return sqlSession.selectList("getCartypeList");
     }
 
     public CartypeDTO getCartype(String id) {
