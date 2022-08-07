@@ -1,7 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-        <a class="navbar-brand" href="<c:url value="/"/>">렌트카</a>
+        <img src="https://user-images.githubusercontent.com/66625672/183276264-2d5aa8de-6e43-4c73-97b2-fc16f2d3fe20.png"
+             style="width: 100px; margin-right: 50px" alt="logo1" onclick="location.href='/'">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -12,7 +13,7 @@
                     <a class="nav-link" href="<c:url value="/"/>">홈으로</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">예약하기</a>
+                    <a class="nav-link" href="<c:url value="/reserve/index"/>">예약하기</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<c:url value="/car/type_list"/>">차량 종류</a>
@@ -31,7 +32,7 @@
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">로그인</a>
+                    <a class="nav-link" href="<c:url value='/common/signin'/>">로그인</a>
                 </li>
             </ul>
             <ul class="navbar-nav">

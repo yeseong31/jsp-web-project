@@ -38,8 +38,10 @@
                         <!-- Product actions-->
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                             <div class="text-center">
-                                <a class="btn btn-outline-dark mt-auto btn-sm" href="car/detail?id=${dto.id}">옵션 보기</a>
-                                <a class="btn btn-outline-primary mt-auto btn-sm" href="#">예약하기</a>
+                                <a class="btn btn-outline-dark mt-auto btn-sm"
+                                   href="<c:url value="/car/detail?id=${dto.id}"/>">옵션 보기</a>
+                                <a class="btn btn-outline-primary mt-auto btn-sm"
+                                   href="<c:url value="/reserve/index?id=${dto.id}"/>">예약하기</a>
                             </div>
                         </div>
                     </div>

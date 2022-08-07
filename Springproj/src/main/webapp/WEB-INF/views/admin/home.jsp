@@ -3,6 +3,7 @@
 <!-- home.jsp -->
 <%@ include file="../top.jsp" %>
 <section class="py-5">
+    <h5 class="display-6 fw-bolder text-center">관리자 페이지</h5>
     <div class="container px-4 px-lg-5 my-5">
         <button type="button" class="btn btn-outline-dark"
                 onclick="location.href='#'" disabled>사용자 관리</button>

@@ -5,6 +5,7 @@ import com.example.proj.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -27,6 +28,15 @@ public class CarController {
         CarDTO dto = carService.getCar(id);
         req.setAttribute("getCar", dto);
         return "car/car_detail";
+    }
+
+    @RequestMapping("/reserve/index")
+    public String reserve_index(HttpServletRequest req, @RequestParam(required = false) String id) {
+        CarDTO dto = null;
+        if (id != null)
+            dto = carService.getCar(id);
+        req.setAttribute("getCar", dto);
+        return "reservation/index";
     }
 
 }
