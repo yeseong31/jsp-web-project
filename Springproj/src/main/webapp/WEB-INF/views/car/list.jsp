@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!-- car_list.jsp -->
+<!-- list.jsp -->
 <%@ include file="../top.jsp" %>
 <!-- Header-->
 <header class="bg-dark py-5">
@@ -41,7 +41,7 @@
                                 <a class="btn btn-outline-dark mt-auto btn-sm"
                                    href="<c:url value="/car/detail?id=${dto.id}"/>">옵션 보기</a>
                                 <a class="btn btn-outline-primary mt-auto btn-sm"
-                                   href="<c:url value="/reserve/index?id=${dto.id}"/>">예약하기</a>
+                                   href="<c:url value="/car/reserve?id=${dto.id}"/>">예약하기</a>
                             </div>
                         </div>
                     </div>

@@ -1,6 +1,6 @@
-package com.example.proj.service;
+package com.example.service;
 
-import com.example.proj.dto.CartypeDTO;
+import com.example.dto.CartypeDTO;
 
 import java.util.List;
 

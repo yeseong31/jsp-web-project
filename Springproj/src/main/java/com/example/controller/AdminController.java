@@ -1,9 +1,9 @@
-package com.example.proj.controller;
+package com.example.controller;
 
-import com.example.proj.dto.CarDTO;
-import com.example.proj.dto.CartypeDTO;
-import com.example.proj.service.CarService;
-import com.example.proj.service.CartypeService;
+import com.example.dto.CarDTO;
+import com.example.dto.CartypeDTO;
+import com.example.service.CarService;
+import com.example.service.CartypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;

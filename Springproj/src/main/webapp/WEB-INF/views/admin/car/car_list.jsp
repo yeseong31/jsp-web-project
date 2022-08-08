@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!-- car_list.jsp -->
+<!-- list.jsp -->
 <%@ include file="../../top.jsp" %>
 
 <section class="py-5">

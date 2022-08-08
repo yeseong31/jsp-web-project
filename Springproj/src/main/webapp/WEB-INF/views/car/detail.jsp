@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!-- car_detail.jsp -->
+<!-- detail.jsp -->
 <%@ include file="../top.jsp" %>
 
 <!-- Product section-->
@@ -31,7 +31,7 @@
                     <button class="btn btn-outline-dark flex-shrink-0" type="button"
                             style="margin-right: 5px" onclick="location.href='/'">목록으로 돌아가기</button>
                     <button class="btn btn-outline-primary flex-shrink-0" type="button"
-                            style="margin-right: 5px" onclick="location.href='/reserve/index?id=${getCar.id}'">예약하기</button>
+                            style="margin-right: 5px" onclick="location.href='/car/reserve?id=${getCar.id}'">예약하기</button>
                 </div>
                 <!-- 관리자만 보이도록 수정해야 함 -->
                 <div class="d-flex" style="margin-top: 10px">
