@@ -13,7 +13,7 @@
         select * from CARTYPE where id = #{id}
     </select>
     <update id="updateCartype" parameterType="CartypeDTO">
-        update CARTYPE set name=#{name}, code=#{code}, description=#{description}, modDate=now() where id=#{id}
+        update CARTYPE set name=#{name}, code=#{code}, description=#{description}, moddate=now() where id=#{id}
     </update>
     <delete id="deleteCartype" parameterType="int">
         delete from CARTYPE where id = #{id}

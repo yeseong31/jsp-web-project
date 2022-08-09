@@ -117,4 +117,5 @@ $RECYCLE.BIN/
 *.png
 *.gif
 
-db.properties
+*.properties
+**/test/

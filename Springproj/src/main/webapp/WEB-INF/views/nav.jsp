@@ -29,11 +29,11 @@
                         <a class="dropdown-item" href="#">FAQ</a>
                     </div>
                 </li>
-            </ul>
-            <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="<c:url value='/common/signIn'/>">로그인</a>
                 </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <form name="f" action="<c:url value="/common/logout"/>" method="post">
                         <button class="nav-link" style="text-align: left; width: 100%; border: 0; outline: 0; background-color: #f8f9fa">로그아웃</button>
@@ -41,7 +41,7 @@
                     </form>
                 </li>
             </ul>
-            <ul class="navbar-nav" style="margin-top: -27px">
+            <ul class="navbar-nav" style="">
                 <li class="nav-item active">
                     <a class="nav-link" href="<c:url value="/admin/"/>">관리자 페이지</a>
                 </li>

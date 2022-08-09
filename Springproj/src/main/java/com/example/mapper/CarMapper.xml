@@ -16,7 +16,7 @@
     <update id="updateCar" parameterType="CarDTO">
         update CAR set name=#{name}, code=#{code}, description=#{description}, price=#{price},
                        passengers=#{passengers}, luggages=#{luggages}, doors=#{doors},
-                       transmission=#{transmission}, modDate=now() where id=#{id}
+                       transmission=#{transmission}, moddate=now() where id=#{id}
     </update>
     <delete id="deleteCar" parameterType="int">
         delete from CAR where id=#{id}

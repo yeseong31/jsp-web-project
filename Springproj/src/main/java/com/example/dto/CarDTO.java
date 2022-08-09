@@ -12,8 +12,8 @@ public class CarDTO {
     private int luggages;
     private int doors;
     private String transmission;
-    private Date regDate;
-    private Date modDate;
+    private Date regdate;
+    private Date moddate;
 
     public int getId() {
         return id;
@@ -87,19 +87,19 @@ public class CarDTO {
         this.transmission = transmission;
     }
 
-    public Date getRegDate() {
-        return regDate;
+    public Date getRegdate() {
+        return regdate;
     }
 
-    public void setRegDate(Date regDate) {
-        this.regDate = regDate;
+    public void setRegdate(Date regdate) {
+        this.regdate = regdate;
     }
 
-    public Date getModDate() {
-        return modDate;
+    public Date getModdate() {
+        return moddate;
     }
 
-    public void setModDate(Date modDate) {
-        this.modDate = modDate;
+    public void setModdate(Date moddate) {
+        this.moddate = moddate;
     }
 }
