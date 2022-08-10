@@ -13,10 +13,10 @@
                          style="width: 100%; margin: 50px 0" alt="logo1">
                 </div>
                 <div style="margin-bottom:.5rem">
-                    <label for="email" class="floating-label"></label>
+                    <label for="username" class="floating-label"></label>
                     <input style="width: 258px; height: 36px; font-size: 15px; border: 1px solid #dbdbdb;
                                     border-radius: 6px;padding: 9px 0 7px 8px;background-color: #FAFAFA;"
-                           type="email" id="email" name="email" placeholder="이메일 주소">
+                           type="email" id="username" name="username" placeholder="아이디">
                 </div>
                 <div style="margin-bottom:.5rem">
                     <label for="name" class="floating-label"></label>

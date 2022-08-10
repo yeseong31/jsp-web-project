@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member.mybatis.MemberMapper">
+    <resultMap id="memberMap" type="com.example.dto.MemberDTO">
+        <id property="username" column="username"/>
+        <result property="username" column="username"/>
+        <result property="name" column="name"/>
+        <result property="password" column="password"/>
+        <result property="email" column="email"/>
+        <result property="phone" column="phone"/>
+        <result property="is_active" column="is_active"/>
+        <result property="last_login" column="last_login"/>
+        <result property="reg_date" column="reg_date"/>
+        <result property="mod_date" column="mod_date"/>
+        <collection property="authList" column="authMap"/>
+    </resultMap>
+    <resultMap id="authMap" type="com.example.dto.MemberAuthDTO">
+        <result property="userid" column="userid"/>
+        <result property="auth" column="auth"/>
+    </resultMap>
+
+    <select id="read" resultMap="memberMap">
+        select m.username, name, password, email, phone, is_active, last_login, reg_date, mod_date, auth
+        from member m left outer join member_auth ma on m.username = ma.username
+        where m.username = #{username}
+    </select>
+</mapper>
