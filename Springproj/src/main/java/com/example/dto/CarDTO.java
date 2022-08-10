@@ -8,12 +8,12 @@ public class CarDTO {
     private String code;
     private String description;
     private int price;
-    private int passengers;
-    private int luggages;
-    private int doors;
+    private int passenger;
+    private int luggage;
+    private int door;
     private String transmission;
-    private Date regdate;
-    private Date moddate;
+    private Date reg_date;
+    private Date mod_date;
 
     public int getId() {
         return id;
@@ -55,28 +55,28 @@ public class CarDTO {
         this.price = price;
     }
 
-    public int getPassengers() {
-        return passengers;
+    public int getPassenger() {
+        return passenger;
     }
 
-    public void setPassengers(int passengers) {
-        this.passengers = passengers;
+    public void setPassenger(int passenger) {
+        this.passenger = passenger;
     }
 
-    public int getLuggages() {
-        return luggages;
+    public int getLuggage() {
+        return luggage;
     }
 
-    public void setLuggages(int luggages) {
-        this.luggages = luggages;
+    public void setLuggage(int luggage) {
+        this.luggage = luggage;
     }
 
-    public int getDoors() {
-        return doors;
+    public int getDoor() {
+        return door;
     }
 
-    public void setDoors(int doors) {
-        this.doors = doors;
+    public void setDoor(int door) {
+        this.door = door;
     }
 
     public String getTransmission() {
@@ -87,19 +87,19 @@ public class CarDTO {
         this.transmission = transmission;
     }
 
-    public Date getRegdate() {
-        return regdate;
+    public Date getReg_date() {
+        return reg_date;
     }
 
-    public void setRegdate(Date regdate) {
-        this.regdate = regdate;
+    public void setReg_date(Date reg_date) {
+        this.reg_date = reg_date;
     }
 
-    public Date getModdate() {
-        return moddate;
+    public Date getMod_date() {
+        return mod_date;
     }
 
-    public void setModdate(Date moddate) {
-        this.moddate = moddate;
+    public void setMod_date(Date mod_date) {
+        this.mod_date = mod_date;
     }
 }

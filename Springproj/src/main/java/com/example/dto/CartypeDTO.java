@@ -1,7 +1,6 @@
 package com.example.dto;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 public class CartypeDTO {
 
@@ -9,8 +8,8 @@ public class CartypeDTO {
     private String name;
     private String code;
     private String description;
-    private LocalDateTime regdate;
-    private LocalDateTime moddate;
+    private LocalDateTime reg_date;
+    private LocalDateTime mod_date;
 
     public int getId() {
         return id;
@@ -44,19 +43,19 @@ public class CartypeDTO {
         this.description = description;
     }
 
-    public LocalDateTime getRegdate() {
-        return regdate;
+    public LocalDateTime getReg_date() {
+        return reg_date;
     }
 
-    public void setRegdate(LocalDateTime regdate) {
-        this.regdate = regdate;
+    public void setReg_date(LocalDateTime reg_date) {
+        this.reg_date = reg_date;
     }
 
-    public LocalDateTime getModdate() {
-        return moddate;
+    public LocalDateTime getMod_date() {
+        return mod_date;
     }
 
-    public void setModdate(LocalDateTime moddate) {
-        this.moddate = moddate;
+    public void setMod_date(LocalDateTime mod_date) {
+        this.mod_date = mod_date;
     }
 }

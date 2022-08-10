@@ -21,9 +21,9 @@
                 <p class="lead">${getCar.description}</p>
                 <!-- 옵션 -->
                 <div class="small mb-1">
-                    <p>탑승인원: ${getCar.passengers} 명</p>
-                    <p>트렁크 공간: ${getCar.luggages}</p>
-                    <p>문: ${getCar.doors} 개</p>
+                    <p>탑승인원: ${getCar.passenger} 명</p>
+                    <p>트렁크 공간: ${getCar.luggage}</p>
+                    <p>문: ${getCar.door} 개</p>
                     <p>트랜스미션: ${getCar.transmission}</p>
                 </div>
                 <!-- 버튼 -->

@@ -54,7 +54,7 @@
                         <th scope="col" class="text-center">탑승인원</th>
                         <th>
                             <label style="width: 100%">
-                                <input type="text" name="passengers" value="${getCar.passengers}" style="width: 100%; height: 36px; font-size: 15px; border: 1px solid #dbdbdb;
+                                <input type="text" name="passenger" value="${getCar.passenger}" style="width: 100%; height: 36px; font-size: 15px; border: 1px solid #dbdbdb;
                                         border-radius: 6px; padding: 9px 0 7px 8px; background-color: #FAFAFA;">
                             </label>
                         </th>
@@ -63,7 +63,7 @@
                         <th scope="col" class="text-center">트렁크 공간</th>
                         <th>
                             <label style="width: 100%">
-                                <input type="text" name="luggages" value="${getCar.luggages}" style="width: 100%; height: 36px; font-size: 15px; border: 1px solid #dbdbdb;
+                                <input type="text" name="luggage" value="${getCar.luggage}" style="width: 100%; height: 36px; font-size: 15px; border: 1px solid #dbdbdb;
                                         border-radius: 6px; padding: 9px 0 7px 8px; background-color: #FAFAFA;">
                             </label>
                         </th>
@@ -72,7 +72,7 @@
                         <th scope="col" class="text-center">문</th>
                         <th>
                             <label style="width: 100%">
-                                <input type="text" name="doors" value="${getCar.doors}" style="width: 100%; height: 36px; font-size: 15px; border: 1px solid #dbdbdb;
+                                <input type="text" name="door" value="${getCar.door}" style="width: 100%; height: 36px; font-size: 15px; border: 1px solid #dbdbdb;
                                         border-radius: 6px; padding: 9px 0 7px 8px; background-color: #FAFAFA;">
                             </label>
                         </th>
@@ -125,19 +125,19 @@
             f.description.focus()
             return false;
         }
-        if (f.passengers.value===""){
+        if (f.passenger.value===""){
             alert("탑승인원을 입력하세요")
-            f.passengers.focus()
+            f.passenger.focus()
             return false;
         }
-        if (f.luggages.value===""){
+        if (f.luggage.value===""){
             alert("트렁크공간을 입력하세요")
-            f.luggages.focus()
+            f.luggage.focus()
             return false;
         }
-        if (f.doors.value===""){
+        if (f.door.value===""){
             alert("문 개수를 입력하세요")
-            f.doors.focus()
+            f.door.focus()
             return false;
         }
         if (f.transmission.value===""){
