@@ -9,6 +9,8 @@ public interface CarService {
 
     CarDTO getCar(String id);
 
+    int getCarIdByCode(String code);
+
     int insertCar(CarDTO dto);
 
     int updateCar(CarDTO dto);

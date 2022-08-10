@@ -6,7 +6,8 @@
 <section class="py-5">
     <div class="container">
         <h5 class="display-6 fw-bolder text-center">차량 등록 페이지</h5>
-        <form name="f" action="<c:url value="/admin/car/write"/>" method="post" onsubmit="return checkBoard()">
+        <form name="f" action="<c:url value="/admin/car/write"/>" method="post"
+                    enctype="multipart/form-data" onsubmit="return checkBoard()">
             <div class="row mt-4">
                 <table class="table">
                     <thead></thead>
@@ -96,9 +97,8 @@
                     <tr>
                         <th scope="col" class="text-center">차량 종류</th>
                         <th>
-                            <label for="car_type"></label>
-                            <select id="car_type" name="car_type"
-                                    style="width: 100%; height: 36px; font-size: 15px; border: 1px solid #dbdbdb;
+                            <label for="car_type">
+                            </label><select id="car_type" name="car_type" style="width: 100%; height: 36px; font-size: 15px; border: 1px solid #dbdbdb;
                                             border-radius: 6px; padding: 9px 0 7px 8px; background-color: #FAFAFA;">
                                 <option value="">---</option>
                                 <c:forEach var="dto" items="${getCarTypeList}">
@@ -106,6 +106,12 @@
                                 </c:forEach>
                             </select>
                         </th>
+                    </tr>
+                    <tr>
+                        <th scope="col" class="text-center">차량 이미지</th>
+                        <td><input type="file" name="filename"
+                                   style="width: 100%; height: 48px; font-size: 15px; border: 1px solid #dbdbdb;
+                                   border-radius: 6px; padding: 9px 0 7px 8px; background-color: #FAFAFA;"></td>
                     </tr>
                     </tbody>
                 </table>

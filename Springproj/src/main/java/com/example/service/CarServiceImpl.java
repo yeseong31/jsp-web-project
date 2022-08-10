@@ -24,6 +24,11 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
+    public int getCarIdByCode(String code) {
+        return sqlSession.selectOne("getCarIdByCode", code);
+    }
+
+    @Override
     public int insertCar(CarDTO dto) {
         return sqlSession.insert("insertCar", dto);
     }

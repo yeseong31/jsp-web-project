@@ -1,7 +1,9 @@
 package com.example.controller;
 
 import com.example.dto.CarDTO;
+import com.example.dto.CarImageDTO;
 import com.example.dto.CarTypeDTO;
+import com.example.service.CarImageService;
 import com.example.service.CarService;
 import com.example.service.CarTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +11,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 @RequestMapping("/admin")
@@ -21,6 +30,11 @@ public class AdminController {
     CarTypeService carTypeService;
     @Autowired
     CarService carService;
+    @Autowired
+    CarImageService carImageService;
+
+    @Resource(name = "uploadPath")
+    private String uploadPath;
 
     @RequestMapping("/")
     public String admin_home() {
@@ -97,11 +111,35 @@ public class AdminController {
 
     @RequestMapping(value = "/car/write", method = RequestMethod.POST)
     public String admin_car_write_pro(HttpServletRequest req, CarDTO dto) {
-        int res = carService.insertCar(dto);
-        if (res > 0)
-            req.setAttribute("msg", "차량 등록 성공! 차량 목록 페이지로 이동합니다.");
-        else
+        // dispatcher-servlet에 beans 등록 필요 (형변환 시에는 오류 X, 실행 시 오류 발생)
+        MultipartHttpServletRequest mr = (MultipartHttpServletRequest) req;
+        MultipartFile file = mr.getFile("filename");
+        // 파일 경로 지정 (연, 월, 일)
+        Calendar cal = Calendar.getInstance();
+        String dateString = String.format("%04d/%02d/%02d/",
+                cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH));
+
+        String filename = dateString + Objects.requireNonNull(file).getOriginalFilename();
+        File target = new File(uploadPath, Objects.requireNonNull(filename));
+        try {
+            file.transferTo(target);
+        } catch (IOException ignored) {}
+
+        // 차량 정보 저장
+        int res1 = carService.insertCar(dto);
+        if (res1 <= 0) {
             req.setAttribute("msg", "차량 등록 실패... 차량 목록 페이지로 이동합니다.");
+            req.setAttribute("url", "/admin/car/list");
+            return "message";
+        }
+        // 차량 이미지 저장
+        int car_id = carService.getCarIdByCode(dto.getCode());
+        int res2 = carImageService.insertImage(String.valueOf(car_id), filename);
+        if (res2 <= 0) {
+            req.setAttribute("msg", "차량 이미지 등록 실패... 차량 목록 페이지로 이동합니다.");
+        } else {
+            req.setAttribute("msg", "차량 등록 성공! 차량 목록 페이지로 이동합니다.");
+        }
         req.setAttribute("url", "/admin/car/list");
         return "message";
     }
