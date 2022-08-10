@@ -3,8 +3,6 @@
 <!-- signIn.jsp -->
 <%@ include file="../top.jsp" %>
 
-<h2><c:out value="${error}"/></h2>
-
 <div style="font-size: 14px; text-align: center; width: 100%; min-height: 80vh; display: flex; flex-direction: row;
             align-items: center;justify-content: center;background-color: #fafafa;">
     <div>
@@ -14,7 +12,8 @@
                 <img src="https://user-images.githubusercontent.com/66625672/183276264-2d5aa8de-6e43-4c73-97b2-fc16f2d3fe20.png"
                      style="width: 100%; margin: 50px 0" alt="logo1">
             </div>
-            <form name="f" action="<c:url value="/login"/>" method="post">
+<%--            <form name="f" action="<c:url value="/login"/>" method="post">--%>
+            <form name="f" action="#" method="post">
                 <div style="margin-bottom:.5rem">
                     <label for="username" class="floating-label"></label>
                     <input style="width: 258px; height: 36px; font-size: 15px; border: 1px solid #dbdbdb;
@@ -28,7 +27,7 @@
                            type="password" id="password" name="password" placeholder="비밀번호">
                 </div>
                 <div>
-                    <button id="button-join" type="submit" class="btn btn-primary signup-button" style="width: 258px; margin-left: 2px"> 로그인 </button>
+                    <button id="button-join" type="button" class="btn btn-primary signup-button" style="width: 258px; margin-left: 2px"> 로그인 </button>
                 </div>
                 <label><input name="${_csrf.parameterName}" value="${_csrf.token}" hidden/></label>
             </form>
@@ -40,4 +39,5 @@
         </div>
     </div>
 </div>
+<h4><c:out value="${error}"/></h4>
 <%@ include file="../bottom.jsp" %>

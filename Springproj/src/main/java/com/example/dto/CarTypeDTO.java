@@ -2,7 +2,7 @@ package com.example.dto;
 
 import java.time.LocalDateTime;
 
-public class CartypeDTO {
+public class CarTypeDTO {
 
     private int id;
     private String name;

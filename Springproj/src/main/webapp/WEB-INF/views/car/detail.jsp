@@ -11,6 +11,7 @@
             <div class="col-md-6">
                 <!-- 상품코드 -->
                 <div class="small mb-1">차량: ${getCar.code}</div>
+                <div class="small mb-1">차종: ${getCarType.name}</div>
                 <!-- 상품이름 -->
                 <h1 class="display-5 fw-bolder">${getCar.name}</h1>
                 <!-- 상품가격 -->

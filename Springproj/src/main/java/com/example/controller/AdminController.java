@@ -1,9 +1,9 @@
 package com.example.controller;
 
 import com.example.dto.CarDTO;
-import com.example.dto.CartypeDTO;
+import com.example.dto.CarTypeDTO;
 import com.example.service.CarService;
-import com.example.service.CartypeService;
+import com.example.service.CarTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -18,7 +18,7 @@ import java.util.List;
 public class AdminController {
 
     @Autowired
-    CartypeService cartypeService;
+    CarTypeService carTypeService;
     @Autowired
     CarService carService;
 
@@ -28,20 +28,20 @@ public class AdminController {
     }
 
     @RequestMapping("/car/type_list")
-    public String admin_cartype(HttpServletRequest req) {
-        List<CartypeDTO> list = cartypeService.getCartypeList();
-        req.setAttribute("getCartypeList", list);
+    public String admin_car_type(HttpServletRequest req) {
+        List<CarTypeDTO> list = carTypeService.getCarTypeList();
+        req.setAttribute("getCarTypeList", list);
         return "admin/car/type_list";
     }
 
     @RequestMapping(value = "/car/type_write", method = RequestMethod.GET)
-    public String admin_cartype_write() {
+    public String admin_car_type_write() {
         return "admin/car/type_write";
     }
 
     @RequestMapping(value = "/car/type_write", method = RequestMethod.POST)
-    public String admin_cartype_write_pro(HttpServletRequest req, CartypeDTO dto) {
-        int res = cartypeService.insertCartype(dto);
+    public String admin_car_type_write_pro(HttpServletRequest req, CarTypeDTO dto) {
+        int res = carTypeService.insertCarType(dto);
         if (res > 0)
             req.setAttribute("msg", "차종 등록 성공! 차종 목록 페이지로 이동합니다.");
         else
@@ -51,16 +51,16 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/car/type_update", method = RequestMethod.GET)
-    public String admin_cartype_update(HttpServletRequest req, String id) {
-        CartypeDTO dto = cartypeService.getCartype(id);
-        req.setAttribute("getCartype", dto);
+    public String admin_car_type_update(HttpServletRequest req, String id) {
+        CarTypeDTO dto = carTypeService.getCarType(id);
+        req.setAttribute("getCarType", dto);
         return "admin/car/type_update";
     }
 
     @RequestMapping(value = "/car/type_update", method = RequestMethod.POST)
-    public String admin_cartype_update(HttpServletRequest req, CartypeDTO dto, BindingResult result) {
+    public String admin_car_type_update(HttpServletRequest req, CarTypeDTO dto, BindingResult result) {
         if (result.hasErrors()) dto.setId(0);
-        int res = cartypeService.updateCartype(dto);
+        int res = carTypeService.updateCarType(dto);
         if (res > 0)
             req.setAttribute("msg", "차종 수정 성공! 차종 목록 페이지로 이동합니다.");
         else
@@ -70,15 +70,14 @@ public class AdminController {
     }
 
     @RequestMapping("/car/type_delete")
-    public String admin_cartype_delete(HttpServletRequest req, String id) {
-        int res = cartypeService.deleteCartype(id);
+    public String admin_car_type_delete(HttpServletRequest req, String id) {
+        int res = carTypeService.deleteCarType(id);
         if (res > 0) {
             req.setAttribute("msg", "차종 삭제 성공! 차종 상세 페이지로 이동합니다.");
-            req.setAttribute("url", "/admin/car/type_list");
         } else {
             req.setAttribute("msg", "차종 삭제 실패... 차종 상세 페이지로 이동합니다.");
-            req.setAttribute("url", "/admin/car/type_list");
         }
+        req.setAttribute("url", "/admin/car/type_list");
         return "message";
     }
 
@@ -86,12 +85,14 @@ public class AdminController {
     public String admin_car(HttpServletRequest req) {
         List<CarDTO> list = carService.getCarList();
         req.setAttribute("getCarList", list);
-        return "admin/car/car_list";
+        return "admin/car/list";
     }
 
     @RequestMapping(value = "/car/write", method = RequestMethod.GET)
-    public String admin_car_write() {
-        return "admin/car/car_write";
+    public String admin_car_write(HttpServletRequest req) {
+        List<CarTypeDTO> list = carTypeService.getCarTypeList();
+        req.setAttribute("getCarTypeList", list);
+        return "admin/car/write";
     }
 
     @RequestMapping(value = "/car/write", method = RequestMethod.POST)
@@ -108,8 +109,10 @@ public class AdminController {
     @RequestMapping(value = "/car/update", method = RequestMethod.GET)
     public String admin_car_update(HttpServletRequest req, String id) {
         CarDTO dto = carService.getCar(id);
+        List<CarTypeDTO> list = carTypeService.getCarTypeList();
         req.setAttribute("getCar", dto);
-        return "admin/car/car_update";
+        req.setAttribute("getCarTypeList", list);
+        return "admin/car/update";
     }
 
     @RequestMapping(value = "/car/update", method = RequestMethod.POST)

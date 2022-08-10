@@ -7,14 +7,14 @@
 <section class="py-5">
     <div class="container px-4 px-lg-5 my-5">
         <div class="row gx-4 gx-lg-5 align-items-center">
-            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="https://picsum.photos/seed/${getCartype.id}/600/700" alt="product_image" /></div>
+            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="https://picsum.photos/seed/${getCarType.id}/600/700" alt="product_image" /></div>
             <div class="col-md-6">
                 <!-- 상품코드 -->
-                <div class="small mb-1">차량 종류: ${getCartype.code}</div>
+                <div class="small mb-1">차량 종류: ${getCarType.code}</div>
                 <!-- 상품이름 -->
-                <h1 class="display-5 fw-bolder">${getCartype.name}</h1>
+                <h1 class="display-5 fw-bolder">${getCarType.name}</h1>
                 <!-- 상품설명 -->
-                <p class="lead">${getCartype.description}</p>
+                <p class="lead">${getCarType.description}</p>
                 <!-- 버튼 -->
                 <div class="d-flex">
                     <button class="btn btn-outline-dark flex-shrink-0" type="button"
@@ -25,7 +25,7 @@
                     <button class="btn btn-outline-secondary flex-shrink-0" type="button"
                             style="margin-right: 5px" onclick="location.href='/admin/car/type_list'">관리자 목록</button>
                     <button type="button" class="btn btn-outline-secondary"
-                            onclick="location.href='/admin/car/type_update?id=${getCartype.id}'">수정</button>
+                            onclick="location.href='/admin/car/type_update?id=${getCarType.id}'">수정</button>
                 </div>
             </div>
         </div>

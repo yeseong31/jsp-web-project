@@ -1,9 +1,9 @@
 package com.example.controller;
 
 import com.example.dto.CarDTO;
-import com.example.dto.CartypeDTO;
+import com.example.dto.CarTypeDTO;
 import com.example.service.CarService;
-import com.example.service.CartypeService;
+import com.example.service.CarTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +18,7 @@ public class CarController {
     @Autowired
     CarService carService;
     @Autowired
-    CartypeService cartypeService;
+    CarTypeService carTypeService;
 
     @RequestMapping("/")
     public String home(HttpServletRequest req) {
@@ -29,22 +29,24 @@ public class CarController {
 
     @RequestMapping("/car/detail")
     public String car_detail(HttpServletRequest req, String id) {
-        CarDTO dto = carService.getCar(id);
-        req.setAttribute("getCar", dto);
+        CarDTO car = carService.getCar(id);
+        CarTypeDTO type = carTypeService.getCarType(String.valueOf(car.getCar_type()));
+        req.setAttribute("getCar", car);
+        req.setAttribute("getCarType", type);
         return "car/detail";
     }
 
     @RequestMapping("/car/type_list")
-    public String cartype_list(HttpServletRequest req) {
-        List<CartypeDTO> list = cartypeService.getCartypeList();
-        req.setAttribute("getCartypeList", list);
+    public String car_type_list(HttpServletRequest req) {
+        List<CarTypeDTO> list = carTypeService.getCarTypeList();
+        req.setAttribute("getCarTypeList", list);
         return "car/type_list";
     }
 
     @RequestMapping("/car/type_detail")
-    public String cartype_detail(HttpServletRequest req, String id) {
-        CartypeDTO dto = cartypeService.getCartype(id);
-        req.setAttribute("getCartype", dto);
+    public String car_type_detail(HttpServletRequest req, String id) {
+        CarTypeDTO dto = carTypeService.getCarType(id);
+        req.setAttribute("getCarType", dto);
         return "car/type_detail";
     }
 

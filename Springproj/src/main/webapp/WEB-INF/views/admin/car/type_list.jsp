@@ -17,12 +17,12 @@
                 </tr>
                 </thead>
                 <tbody>
-                    <c:if test="${empty getCartypeList}">
+                    <c:if test="${empty getCarTypeList}">
                         <tr>
                             <td colspan="5">등록된 차종이 없습니다.</td>
                         </tr>
                     </c:if>
-                    <c:forEach var="dto" items="${getCartypeList}">
+                    <c:forEach var="dto" items="${getCarTypeList}">
                         <tr>
                             <td class="text-center">${dto.id}</td>
                             <td style="padding-left: 30px"><a href="<c:url value="/car/type_detail?id=${dto.id}"/>">${dto.name}</a></td>
