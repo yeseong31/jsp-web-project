@@ -18,7 +18,7 @@
         <security:intercept-url pattern="/admin/*" access="hasRole('ROLE_ADMIN')"/>
         <security:intercept-url pattern="/admin/**/*" access="hasRole('ROLE_ADMIN')"/>
         <!-- 커스텀 로그인 -->
-        <security:form-login login-page="/common/signIn" authentication-success-handler-ref="customLoginSuccess"/>
+        <security:form-login login-page="/common/sign_in" authentication-success-handler-ref="customLoginSuccess"/>
         <!-- 접근 제한 메시지 -->
         <security:access-denied-handler ref="customAccessDenied"/>
         <!-- 로그아웃 -->

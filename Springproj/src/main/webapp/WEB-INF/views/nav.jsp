@@ -30,7 +30,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<c:url value='/common/signIn'/>">로그인</a>
+                    <a class="nav-link" href="<c:url value='/common/sign_in'/>">로그인</a>
                 </li>
             </ul>
 <%--            <ul class="navbar-nav ml-auto">--%>

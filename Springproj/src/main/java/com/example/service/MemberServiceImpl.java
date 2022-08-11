@@ -11,7 +11,22 @@ public class MemberServiceImpl implements MemberService {
     private SqlSession sqlSession;
 
     @Override
-    public MemberDTO read(String username) {
-        return sqlSession.selectOne("read", username);
+    public int insertMember(MemberDTO dto) {
+        return sqlSession.insert("insertMember", dto);
+    }
+
+    @Override
+    public int checkMemberId(String userid) {
+        return sqlSession.selectOne("checkMemberWithId", userid);
+    }
+
+    @Override
+    public int checkMemberEmail(String email) {
+        return sqlSession.selectOne("checkMemberWithEmail", email);
+    }
+
+    @Override
+    public String getMemberPassword(String userid) {
+        return sqlSession.selectOne("getMemberPassword", userid);
     }
 }
