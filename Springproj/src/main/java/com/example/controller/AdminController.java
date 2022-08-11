@@ -48,6 +48,13 @@ public class AdminController {
         return "admin/car/type_list";
     }
 
+    @RequestMapping("/car/type_detail")
+    public String admin_car_type_detail(HttpServletRequest req, String id) {
+        CarTypeDTO dto = carTypeService.getCarType(id);
+        req.setAttribute("getCarType", dto);
+        return "admin/car/type_detail";
+    }
+
     @RequestMapping(value = "/car/type_write", method = RequestMethod.GET)
     public String admin_car_type_write() {
         return "admin/car/type_write";
@@ -100,6 +107,15 @@ public class AdminController {
         List<CarDTO> list = carService.getCarList();
         req.setAttribute("getCarList", list);
         return "admin/car/list";
+    }
+
+    @RequestMapping("/car/detail")
+    public String admin_car_detail(HttpServletRequest req, String id) {
+        CarDTO car = carService.getCar(id);
+        CarTypeDTO type = carTypeService.getCarType(String.valueOf(car.getCar_type()));
+        req.setAttribute("getCar", car);
+        req.setAttribute("getCarType", type);
+        return "admin/car/detail";
     }
 
     @RequestMapping(value = "/car/write", method = RequestMethod.GET)

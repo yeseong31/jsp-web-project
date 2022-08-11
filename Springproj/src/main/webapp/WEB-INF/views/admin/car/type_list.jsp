@@ -25,7 +25,7 @@
                     <c:forEach var="dto" items="${getCarTypeList}">
                         <tr>
                             <td class="text-center">${dto.id}</td>
-                            <td style="padding-left: 30px"><a href="<c:url value="/car/type_detail?id=${dto.id}"/>">${dto.name}</a></td>
+                            <td style="padding-left: 30px"><a href="<c:url value="/admin/car/type_detail?id=${dto.id}"/>">${dto.name}</a></td>
                             <td class="text-center">${dto.code}</td>
                             <td class="text-center">
                                 <button type="button" class="btn btn-outline-secondary btn-sm"
