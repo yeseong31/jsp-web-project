@@ -3,7 +3,10 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="car_image.mybatis.CarImageMapper">
+    <select id="getImage" parameterType="int" resultType="CarImageDTO">
+        select * from car_image where car_id=#{car_id}
+    </select>
     <insert id="insertImage" parameterType="java.util.Map">
-        insert into car_image values (default, #{filename}, #{car_id}, default, null)
+        insert into car_image values (default, #{uuid}, #{upload_path}, #{filename}, #{type}, default, null, #{car_id})
     </insert>
 </mapper>

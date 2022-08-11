@@ -109,7 +109,7 @@
                         <th scope="col" class="text-center">차량 이미지</th>
                         <td><input type="file" name="filename"
                                    style="width: 100%; height: 48px; font-size: 15px; border: 1px solid #dbdbdb;
-                                   border-radius: 6px; padding: 9px 0 7px 8px; background-color: #FAFAFA;"></td>
+                                   border-radius: 6px; padding: 9px 0 7px 8px; background-color: #FAFAFA;" multiple></td>
                     </tr>
                     </tbody>
                 </table>

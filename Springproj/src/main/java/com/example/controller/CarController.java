@@ -1,7 +1,9 @@
 package com.example.controller;
 
 import com.example.dto.CarDTO;
+import com.example.dto.CarImageDTO;
 import com.example.dto.CarTypeDTO;
+import com.example.service.CarImageService;
 import com.example.service.CarService;
 import com.example.service.CarTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,8 @@ public class CarController {
     CarService carService;
     @Autowired
     CarTypeService carTypeService;
+    @Autowired
+    CarImageService carImageService;
 
     @RequestMapping("/")
     public String home(HttpServletRequest req) {
@@ -31,8 +35,10 @@ public class CarController {
     public String car_detail(HttpServletRequest req, String id) {
         CarDTO car = carService.getCar(id);
         CarTypeDTO type = carTypeService.getCarType(String.valueOf(car.getCar_type()));
+        List<CarImageDTO> img_list = carImageService.getImageList(id);
         req.setAttribute("getCar", car);
         req.setAttribute("getCarType", type);
+        req.setAttribute("getCarImageList", img_list);
         return "car/detail";
     }
 

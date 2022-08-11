@@ -12,10 +12,12 @@ import java.time.LocalDateTime;
 public class CarImageDTO {
 
     private int id;
-    private String name;
-    private String image;
-    private int car_id;
+    private String uuid;
+    private String upload_path;
+    private String filename;
+    private int type;
     private LocalDateTime reg_date;
     private LocalDateTime mod_date;
+    private int car_id;
 
 }

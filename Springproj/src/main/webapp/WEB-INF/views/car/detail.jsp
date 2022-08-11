@@ -7,7 +7,10 @@
 <section class="py-5">
     <div class="container px-4 px-lg-5 my-5">
         <div class="row gx-4 gx-lg-5 align-items-center">
-            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="https://picsum.photos/seed/${getCar.id}/600/700" alt="product_image" /></div>
+            <div class="col-md-6">
+                <img class="card-img-top mb-5 mb-md-0" src="https://picsum.photos/seed/${getCar.id}/600/700" alt="product_image" />
+<%--                <img class="card-img-top mb-5 mb-md-0" src="${getCarImage.image}" alt="product_image" />--%>
+            </div>
             <div class="col-md-6">
                 <!-- 상품코드 -->
                 <div class="small mb-1">차량: ${getCar.code}</div>
