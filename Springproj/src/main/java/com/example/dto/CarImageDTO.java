@@ -17,7 +17,6 @@ public class CarImageDTO {
     private String filename;
     private int type;
     private LocalDateTime reg_date;
-    private LocalDateTime mod_date;
     private int car_id;
 
 }
