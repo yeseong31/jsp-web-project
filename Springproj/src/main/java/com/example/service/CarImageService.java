@@ -6,10 +6,10 @@ import java.util.List;
 
 public interface CarImageService {
 
-    int insertImage(String car_id, String uuid, String upload_path, String filename, String type);
+    int insertImage(int car_id, String uuid, String upload_path, String filename, String type);
 
-    List<CarImageDTO> getImageList(String car_id);
+    List<CarImageDTO> getImageList(int car_id);
 
-    CarImageDTO getImageOne(String car_id);
+    CarImageDTO getImageOne(int car_id);
 
 }

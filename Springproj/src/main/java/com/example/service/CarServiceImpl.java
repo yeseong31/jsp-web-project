@@ -24,8 +24,8 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public CarDTO getCar(String id) {
-        return sqlSession.selectOne("getCar", Integer.parseInt(id));
+    public CarDTO getCar(int id) {
+        return sqlSession.selectOne("getCar", id);
     }
 
     @Override
@@ -49,11 +49,11 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public int deleteCar(String id) {
+    public int deleteCar(int id) {
         int res = -1;
         // 비밀번호 일치 시 삭제할 수 있도록 해야 함
         if (true) {
-            res = sqlSession.delete("deleteCar", Integer.parseInt(id));
+            res = sqlSession.delete("deleteCar", id);
         }
         return res;
     }

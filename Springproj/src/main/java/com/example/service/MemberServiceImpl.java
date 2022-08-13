@@ -39,6 +39,6 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public MemberDTO read(String userid) {
-        return sqlSession.selectOne("read");
+        return sqlSession.selectOne("read", userid);
     }
 }

@@ -9,7 +9,7 @@ public interface CarService {
 
     List<CarDTO> getCarListByCarType(int car_type);
 
-    CarDTO getCar(String id);
+    CarDTO getCar(int id);
 
     int getCarIdByCode(String code);
 
@@ -17,5 +17,5 @@ public interface CarService {
 
     int updateCar(CarDTO dto);
 
-    int deleteCar(String id);
+    int deleteCar(int id);
 }
