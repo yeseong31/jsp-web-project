@@ -13,22 +13,22 @@
                     <a class="nav-link" href="<c:url value="/"/>">홈으로</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<c:url value="/car/reserve"/>">예약하기</a>
+                    <a class="nav-link" href="<c:url value="/car/rent"/>">예약하기</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<c:url value="/car/type_list"/>">차량 종류</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        About
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">서비스</a>
-                        <a class="dropdown-item" href="#">위치</a>
-                        <a class="dropdown-item" href="#">FAQ</a>
-                    </div>
-                </li>
+<%--                <li class="nav-item dropdown">--%>
+<%--                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"--%>
+<%--                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--%>
+<%--                        About--%>
+<%--                    </a>--%>
+<%--                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">--%>
+<%--                        <a class="dropdown-item" href="#">서비스</a>--%>
+<%--                        <a class="dropdown-item" href="#">위치</a>--%>
+<%--                        <a class="dropdown-item" href="#">FAQ</a>--%>
+<%--                    </div>--%>
+<%--                </li>--%>
                 <li class="nav-item">
                     <a class="nav-link" href="<c:url value='/common/sign_in'/>">로그인</a>
                 </li>

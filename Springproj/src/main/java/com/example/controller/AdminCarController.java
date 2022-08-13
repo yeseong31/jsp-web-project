@@ -81,7 +81,7 @@ public class AdminCarController {
             req.setAttribute("msg", "차종 수정 성공! 차종 목록 페이지로 이동합니다.");
         else
             req.setAttribute("msg", "차종 수정 실패... 차종 목록 페이지로 이동합니다.");
-        req.setAttribute("url", "/car/type_detail?id=" + dto.getId());
+        req.setAttribute("url", "/admin/car/type_detail?id=" + dto.getId());
         return "message";
     }
 
@@ -105,7 +105,7 @@ public class AdminCarController {
     }
 
     @RequestMapping("/detail")
-    public String admin_car_detail(HttpServletRequest req, String id) {
+    public String admin_car_detail(HttpServletRequest req, int id) {
         CarDTO car = carService.getCar(id);
         CarTypeDTO type = carTypeService.getCarType(String.valueOf(car.getCar_type()));
         req.setAttribute("getCar", car);
@@ -133,11 +133,11 @@ public class AdminCarController {
                 cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH));
         // 파일 저장
         for (MultipartFile file : files) {
-            int res = 1;
+            int res;
             UUID uuid = UUID.randomUUID();
             String filename = Objects.requireNonNull(file).getOriginalFilename();
             res = carImageService.insertImage(
-                    String.valueOf(car_id), String.valueOf(uuid), dateString, filename, String.valueOf(1));
+                    car_id, String.valueOf(uuid), dateString, filename, String.valueOf(1));
             if (res <= 0) return 0;
             File target = new File(uploadPath, dateString + "/" + uuid + "_" + Objects.requireNonNull(filename));
             try {
@@ -165,7 +165,7 @@ public class AdminCarController {
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.GET)
-    public String admin_car_update(HttpServletRequest req, String id) {
+    public String admin_car_update(HttpServletRequest req, int id) {
         CarDTO dto = carService.getCar(id);
         List<CarTypeDTO> list = carTypeService.getCarTypeList();
         req.setAttribute("getCar", dto);
@@ -183,12 +183,12 @@ public class AdminCarController {
             req.setAttribute("msg", "차량 이미지 수정 실패... 차량 목록 페이지로 이동합니다.");
         else
             req.setAttribute("msg", "차량 수정 성공! 차량 목록 페이지로 이동합니다.");
-        req.setAttribute("url", "/car/detail?id=" + dto.getId());
+        req.setAttribute("url", "/admin/car/detail?id=" + dto.getId());
         return "message";
     }
 
     @RequestMapping("/delete")
-    public String admin_car_delete(HttpServletRequest req, String id) {
+    public String admin_car_delete(HttpServletRequest req, int id) {
         MultipartHttpServletRequest mr = (MultipartHttpServletRequest) req;
         MultipartFile file = mr.getFile("filename");
         Calendar cal = Calendar.getInstance();

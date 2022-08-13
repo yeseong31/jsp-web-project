@@ -2,16 +2,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- type_list.jsp -->
 <%@ include file="../top.jsp" %>
-<!-- Header-->
-<header class="bg-dark py-5">
-    <div class="container px-4 px-lg-5 my-5">
-        <div class="text-center text-white">
-            <h1 class="display-4 fw-bolder">렌트카 서비스</h1>
-            <p class="lead fw-normal text-white-50 mb-0">Spring Maven을 이용한 웹 서비스</p>
-        </div>
-    </div>
-</header>
 
+<!-- Header-->
+<%@ include file="../header.jsp" %>
 <!-- Section-->
 <section class="py-5">
     <h5 class="display-6 fw-bolder text-center">차량 종류</h5>

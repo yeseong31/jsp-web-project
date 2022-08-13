@@ -35,7 +35,7 @@
                     <button class="btn btn-outline-dark flex-shrink-0" type="button"
                             style="margin-right: 5px" onclick="location.href='/'">목록으로 돌아가기</button>
                     <button class="btn btn-outline-danger flex-shrink-0" type="button"
-                            style="margin-right: 5px" onclick="location.href='/car/reserve?id=${getCar.id}'">예약하기</button>
+                            style="margin-right: 5px" onclick="location.href='/car/rent?id=${getCar.id}'">예약하기</button>
                 </div>
             </div>
         </div>

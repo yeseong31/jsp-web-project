@@ -105,6 +105,8 @@
         </div>
         <!-- 버튼 -->
         <div class="d-flex">
+            <button type="button" class="btn btn-outline-dark flex-shrink-0"
+                    style="margin-right: 5px" onclick="location.href='/admin/car/list'">목록</button>
             <button class="btn btn-outline-secondary flex-shrink-0" type="button"
                     style="margin-right: 5px" onclick="location.href='/admin/car/update?id=${getCar.id}'">수정</button>
             <button class="btn btn-outline-danger flex-shrink-0" type="button"

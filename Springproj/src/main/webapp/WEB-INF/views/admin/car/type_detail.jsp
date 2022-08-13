@@ -45,6 +45,8 @@
                 </tbody>
             </table>
         </div>
+        <button type="button" class="btn btn-outline-dark"
+                onclick="location.href='/admin/car/type_list'">목록</button>
         <button type="button" class="btn btn-outline-secondary"
                 onclick="location.href='/admin/car/type_update?id=${getCarType.id}'">수정</button>
         <button type="button" name="delete_btn" class="btn btn-outline-danger"

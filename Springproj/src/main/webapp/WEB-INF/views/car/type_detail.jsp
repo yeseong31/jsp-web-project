@@ -54,7 +54,7 @@
                                 <a class="btn btn-outline-dark mt-auto btn-sm"
                                    href="<c:url value="/car/detail?id=${dto.id}"/>">옵션 보기</a>
                                 <a class="btn btn-outline-primary mt-auto btn-sm"
-                                   href="<c:url value="/car/reserve?id=${dto.id}"/>">예약하기</a>
+                                   href="<c:url value="/car/rent?id=${dto.id}"/>">예약하기</a>
                             </div>
                         </div>
                     </div>

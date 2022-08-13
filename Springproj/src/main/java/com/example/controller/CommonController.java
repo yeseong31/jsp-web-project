@@ -14,16 +14,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
+@RequestMapping("/common")
 public class CommonController {
     @Autowired
     MemberService memberService;
 
-    @GetMapping("/common/sign_in")
+    @GetMapping("/sign_in")
     public String sign_in() {
         return "common/sign_in";
     }
 
-    @PostMapping("/common/sign_in")
+    @PostMapping("/sign_in")
     public String sign_in(HttpServletRequest req, MemberDTO dto) {
         // 존재하지 않는 사용자인 경우
         if (memberService.checkMemberId(dto.getUserid()) <= 0) {
@@ -43,12 +44,12 @@ public class CommonController {
         return "message";
     }
 
-    @GetMapping("/common/sign_up")
+    @GetMapping("/sign_up")
     public String sign_up() {
         return "common/sign_up";
     }
 
-    @PostMapping("/common/sign_up")
+    @PostMapping("/sign_up")
     public String sign_up(HttpServletRequest req, MemberDTO dto) {
         // 아이디 중복 확인
         if (memberService.checkMemberId(dto.getUserid()) > 0) {
@@ -74,12 +75,7 @@ public class CommonController {
         return "message";
     }
 
-    @GetMapping("/common/logout")
+    @GetMapping("/logout")
     public void logout() {}
-
-    @GetMapping("/accessError")
-    public void accessDenied(Authentication auth, Model model) {
-        model.addAttribute("msg", "Access Denied");
-    }
 
 }

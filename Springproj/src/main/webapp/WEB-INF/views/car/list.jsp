@@ -2,21 +2,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- list.jsp -->
 <%@ include file="../top.jsp" %>
-<!-- Header-->
-<header class="bg-dark py-5">
-    <div class="container px-4 px-lg-5 my-5">
-        <div class="text-center text-white">
-            <h1 class="display-4 fw-bolder">렌트카 서비스</h1>
-            <p class="lead fw-normal text-white-50 mb-0">Spring Maven을 이용한 웹 서비스</p>
-        </div>
-    </div>
-</header>
 
+<!-- Header-->
+<%@ include file="../header.jsp" %>
 <!-- Section-->
 <section class="py-5">
     <div class="container">
-        <!-- 차량 예약 -->
-<%--        <%@ include file="reserve.jsp" %>--%>
         <!-- 차량 목록 -->
         <div class="container px-4 px-lg-5 mt-5">
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
@@ -44,7 +35,7 @@
                                     <a class="btn btn-outline-dark mt-auto btn-sm"
                                        href="<c:url value="/car/detail?id=${dto.id}"/>">옵션 보기</a>
                                     <a class="btn btn-outline-primary mt-auto btn-sm"
-                                       href="<c:url value="/car/reserve?id=${dto.id}"/>">예약하기</a>
+                                       href="<c:url value="/car/rent?id=${dto.id}"/>">예약하기</a>
                                 </div>
                             </div>
                         </div>
