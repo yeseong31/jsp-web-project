@@ -113,7 +113,52 @@
     </div>
 </section>
 
+<!-- 유효성 검사 -->
 <script type="text/javascript">
+    function checkBoard(){
+        if (f.code.value===""){
+            alert("코드를 입력하세요")
+            f.code.focus()
+            return false;
+        }
+        if (f.name.value===""){
+            alert("이름을 입력하세요")
+            f.name.focus()
+            return false;
+        }
+        if (f.price.value===""){
+            alert("가격을 입력하세요")
+            f.price.focus()
+            return false;
+        }
+        if (f.description.value===""){
+            alert("설명을 입력하세요")
+            f.description.focus()
+            return false;
+        }
+        if (f.passenger.value===""){
+            alert("탑승인원을 입력하세요")
+            f.passenger.focus()
+            return false;
+        }
+        if (f.luggage.value===""){
+            alert("트렁크공간을 입력하세요")
+            f.luggage.focus()
+            return false;
+        }
+        if (f.door.value===""){
+            alert("문 개수를 입력하세요")
+            f.door.focus()
+            return false;
+        }
+        if (f.transmission.value===""){
+            alert("트랜스미션을 입력하세요")
+            f.transmission.focus()
+            return false;
+        }
+        return true;
+    }
+
     function resize(obj) {
         obj.style.height = '1px';
         obj.style.height = (12 + obj.scrollHeight) + 'px';

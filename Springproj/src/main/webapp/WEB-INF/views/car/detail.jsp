@@ -4,7 +4,7 @@
 <%@ include file="../top.jsp" %>
 
 <!-- Product section-->
-<section class="py-5">
+<section class="py-5" style="background-color: #f8f9fa">
     <div class="container px-4 px-lg-5 my-5">
         <div class="row gx-4 gx-lg-5 align-items-center">
             <div class="col-md-6">
@@ -14,7 +14,7 @@
             <div class="col-md-6">
                 <!-- 상품코드 -->
                 <div class="small mb-1">차량: ${getCar.code}</div>
-                <div class="small mb-1">차종: ${getCarType.name}</div>
+                <div class="small mb-1">차종: <a href="<c:url value="/car/type_detail?id=${getCarType.id}"/>">${getCarType.name}</a></div>
                 <!-- 상품이름 -->
                 <h1 class="display-5 fw-bolder">${getCar.name}</h1>
                 <!-- 상품가격 -->
@@ -34,15 +34,8 @@
                 <div class="d-flex">
                     <button class="btn btn-outline-dark flex-shrink-0" type="button"
                             style="margin-right: 5px" onclick="location.href='/'">목록으로 돌아가기</button>
-                    <button class="btn btn-outline-primary flex-shrink-0" type="button"
+                    <button class="btn btn-outline-danger flex-shrink-0" type="button"
                             style="margin-right: 5px" onclick="location.href='/car/reserve?id=${getCar.id}'">예약하기</button>
-                </div>
-                <!-- 관리자만 보이도록 수정해야 함 -->
-                <div class="d-flex" style="margin-top: 10px">
-                    <button class="btn btn-outline-secondary flex-shrink-0" type="button"
-                            style="margin-right: 5px" onclick="location.href='/admin/car/list'">관리자 목록</button>
-                    <button type="button" class="btn btn-outline-secondary"
-                            onclick="location.href='/admin/car/update?id=${getCar.id}'">수정</button>
                 </div>
             </div>
         </div>

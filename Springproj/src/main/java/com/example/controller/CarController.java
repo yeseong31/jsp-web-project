@@ -24,13 +24,6 @@ public class CarController {
     @Autowired
     CarImageService carImageService;
 
-    @RequestMapping("/")
-    public String home(HttpServletRequest req) {
-        List<CarDTO> list = carService.getCarList();
-        req.setAttribute("getCarList", list);
-        return "car/list";
-    }
-
     @RequestMapping("/car/detail")
     public String car_detail(HttpServletRequest req, String id) {
         CarDTO car = carService.getCar(id);
@@ -52,7 +45,9 @@ public class CarController {
     @RequestMapping("/car/type_detail")
     public String car_type_detail(HttpServletRequest req, String id) {
         CarTypeDTO dto = carTypeService.getCarType(id);
+        List<CarDTO> list = carService.getCarListByCarType(dto.getId());
         req.setAttribute("getCarType", dto);
+        req.setAttribute("getCarList", list);
         return "car/type_detail";
     }
 
@@ -61,7 +56,9 @@ public class CarController {
         CarDTO dto = null;
         if (id != null)
             dto = carService.getCar(id);
+        List<CarDTO> list = carService.getCarList();
         req.setAttribute("getCar", dto);
+        req.setAttribute("getCarList", list);
         return "car/reserve";
     }
 

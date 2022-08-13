@@ -34,7 +34,7 @@
                     <th scope="col" class="text-center">설명</th>
                     <th>
                         <label style="width: 100%">
-                            <textarea id="newTweetContent" name="description" placeholder="설명을 입력해 주세요"
+                            <textarea id="newTweetContent" name="description"
                                       style="width: 100%; font-size: 15px;
                                           border: 1px solid #dbdbdb; border-radius: 6px; padding: 9px 8px 7px 8px;
                                           background-color: #FAFAFA; resize: none" rows="10"
@@ -52,17 +52,7 @@
     </div>
 </section>
 
-<!-- 유효성 검사 -->
 <script type="text/javascript">
-    function checkBoard(){
-        if (f.description.value===""){
-            alert("설명을 입력하세요")
-            f.description.focus()
-            return false;
-        }
-        return true;
-    }
-
     function resize(obj) {
         obj.style.height = '1px';
         obj.style.height = (12 + obj.scrollHeight) + 'px';

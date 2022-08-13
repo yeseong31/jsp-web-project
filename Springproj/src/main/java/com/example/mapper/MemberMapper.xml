@@ -15,4 +15,7 @@
     <select id="getMemberPassword" parameterType="String" resultType="String">
         select password from member where userid=#{userid}
     </select>
+    <select id="getMemberList" resultType="MemberDTO">
+        select * from member order by reg_date
+    </select>
 </mapper>

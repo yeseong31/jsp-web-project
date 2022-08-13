@@ -2,6 +2,8 @@ package com.example.service;
 
 import com.example.dto.MemberDTO;
 
+import java.util.List;
+
 public interface MemberService {
 
     int insertMember(MemberDTO dto);
@@ -11,5 +13,7 @@ public interface MemberService {
     int checkMemberEmail(String email);
 
     String getMemberPassword(String userid);
+
+    List<MemberDTO> getMemberList();
 
 }

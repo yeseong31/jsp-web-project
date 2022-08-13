@@ -16,6 +16,9 @@
     <select id="getCarIdByCode" resultType="int">
         select id from CAR where code = #{code}
     </select>
+    <select id="getCarListByCarType" resultType="CarDTO">
+        select * from CAR where car_type = #{car_type}
+    </select>
     <update id="updateCar" parameterType="CarDTO">
         update CAR set name=#{name}, code=#{code}, description=#{description}, price=#{price},
                        passenger=#{passenger}, luggage=#{luggage}, door=#{door},

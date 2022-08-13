@@ -5,6 +5,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MemberServiceImpl implements MemberService {
     @Autowired
@@ -28,5 +30,10 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public String getMemberPassword(String userid) {
         return sqlSession.selectOne("getMemberPassword", userid);
+    }
+
+    @Override
+    public List<MemberDTO> getMemberList() {
+        return sqlSession.selectList("getMemberList");
     }
 }

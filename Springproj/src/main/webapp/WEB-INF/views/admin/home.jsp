@@ -6,7 +6,7 @@
     <h5 class="display-6 fw-bolder text-center">관리자 페이지</h5>
     <div class="container px-4 px-lg-5 my-5">
         <button type="button" class="btn btn-outline-dark"
-                onclick="location.href='#'" disabled>사용자 관리</button>
+                onclick="location.href='/admin/member/list'">사용자 관리</button>
         <button type="button" class="btn btn-outline-dark"
                 onclick="location.href='/admin/car/type_list'">차종 관리</button>
         <button type="button" class="btn btn-outline-dark"
