@@ -12,11 +12,6 @@
     <bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
 
     <security:http>
-        <!-- 접근 제한 설정 -->
-        <security:intercept-url pattern="/" access="permitAll()"/>
-        <security:intercept-url pattern="/car/reserve/**/*" access="hasRole('ROLE_MEMBER')"/>
-        <security:intercept-url pattern="/admin/*" access="hasRole('ROLE_ADMIN')"/>
-        <security:intercept-url pattern="/admin/**/*" access="hasRole('ROLE_ADMIN')"/>
         <!-- 커스텀 로그인 -->
         <security:form-login login-page="/common/sign_in" authentication-success-handler-ref="customLoginSuccess"/>
         <!-- 접근 제한 메시지 -->
@@ -30,8 +25,8 @@
         <security:authentication-provider>
 <!--            <security:jdbc-user-service-->
 <!--                    data-source-ref="dataSource"-->
-<!--                    users-by-username-query="select username, name, password, email, phone from member where username=?"-->
-<!--                    authorities-by-username-query="select username, auth from member_auth where username=?"/>-->
+<!--                    users-by-username-query="select userid, password, is_active from member where userid=?"-->
+<!--                    authorities-by-username-query="select userid, auth from member_auth where userid=?"/>-->
 <!--            <security:password-encoder ref="bcryptPasswordEncoder"/>-->
             <security:user-service>
                 <security:user name="member" authorities="ROLE_MEMBER" password="{noop}member"/>

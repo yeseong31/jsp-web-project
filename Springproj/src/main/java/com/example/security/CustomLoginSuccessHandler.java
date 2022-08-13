@@ -22,9 +22,13 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
         List<String> roleNames = new ArrayList<>();
         authentication.getAuthorities().forEach(authority -> roleNames.add(authority.getAuthority()));
         // 관리자라면 로그인 이후 '관리자 페이지'로 이동
+        if (roleNames.contains("ROLE_MEMBER")) {
+            response.sendRedirect("/");
+            return;
+        }
         if (roleNames.contains("ROLE_ADMIN")) {
             response.sendRedirect("/admin/");
-             return;
+            return;
         }
         response.sendRedirect("/");
     }

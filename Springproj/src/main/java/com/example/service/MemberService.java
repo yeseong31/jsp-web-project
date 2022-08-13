@@ -16,4 +16,6 @@ public interface MemberService {
 
     List<MemberDTO> getMemberList();
 
+    MemberDTO read(String userid);
+
 }

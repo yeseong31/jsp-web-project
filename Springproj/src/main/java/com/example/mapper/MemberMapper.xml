@@ -18,4 +18,27 @@
     <select id="getMemberList" resultType="MemberDTO">
         select * from member order by reg_date
     </select>
+
+    <resultMap id="memberMap" type="MemberDTO">
+        <id property="userid" column="userid"/>
+        <result property="userid" column="userid"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <result property="email" column="email"/>
+        <result property="phone" column="phone"/>
+        <result property="last_login" column="last_login"/>
+        <result property="is_active" column="is_active"/>
+        <result property="reg_date" column="reg_date"/>
+        <result property="mod_date" column="mod_date"/>
+    </resultMap>
+
+    <resultMap id="authMap" type="MemberAuthDTO">
+        <result property="userid" column="userid"/>
+        <result property="auth" column="auth"/>
+    </resultMap>
+    <select id="read" resultMap="memberMap">
+        select m.userid, username, password, email, phone, last_login, is_active, reg_date, mod_date, ma.auth
+        from member m left outer join member_auth ma on m.userid = ma.userid
+        where m.userid = #{userid}
+    </select>
 </mapper>

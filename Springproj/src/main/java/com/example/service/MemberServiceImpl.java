@@ -36,4 +36,9 @@ public class MemberServiceImpl implements MemberService {
     public List<MemberDTO> getMemberList() {
         return sqlSession.selectList("getMemberList");
     }
+
+    @Override
+    public MemberDTO read(String userid) {
+        return sqlSession.selectOne("read");
+    }
 }
