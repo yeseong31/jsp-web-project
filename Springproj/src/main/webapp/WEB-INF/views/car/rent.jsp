@@ -59,15 +59,14 @@
             <!-- 예약 확인 -->
             <div class="text-center">
                 <a class="btn btn-outline-secondary mt-auto btn-lg" href="<c:url value="/"/>">차량 둘러보기</a>
+                <a class="btn btn-outline-dark mt-auto btn-lg" href="<c:url value="/car/rent/check"/>">내 예약 확인</a>
                 <button class="btn btn-outline-danger mt-auto btn-lg" type="submit">예약 진행</button>
             </div>
         </form>
     </div>
 </section>
 <!-- Footer-->
-<footer class="py-5 bg-dark">
-    <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
-</footer>
+<%@ include file="../footer.jsp" %>
 
 <script type="text/javascript">
     function checkBoard(){

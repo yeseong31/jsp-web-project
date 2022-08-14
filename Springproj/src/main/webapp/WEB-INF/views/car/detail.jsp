@@ -44,12 +44,14 @@
 <!-- Related items section-->
 <section class="py-5 bg-light">
     <div class="container px-4 px-lg-5 mt-5">
-        <h2 class="fw-bolder mb-4">렌트 가능 차량</h2>
-        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+        <c:if test="${empty getCarNumList}">
+            <h4 class="fw-bolder mb-4">현재 렌트 가능한 차량이 없습니다.</h4>
+        </c:if>
+        <c:if test="${not empty getCarNumList}">
+            <h2 class="fw-bolder mb-4">렌트 가능 차량</h2>
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+        </c:if>
             <!-- Car Num List -->
-            <c:if test="${empty getCarNumList}">
-                <h4>현재 렌트 가능한 차량이 없습니다.</h4>
-            </c:if>
             <c:forEach var="dto" items="${getCarNumList}">
                 <div class="col mb-5">
                     <div class="card h-100">
@@ -79,8 +81,5 @@
     </div>
 </section>
 <!-- Footer-->
-<footer class="py-5 bg-dark">
-    <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
-</footer>
-
+<%@ include file="../footer.jsp" %>
 <%@ include file="../bottom.jsp" %>

@@ -4,9 +4,12 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="car_rent.mybatis.CarRentMapper">
     <insert id="insert" parameterType="CarRentDTO">
-        insert into car_rent values(default, #{acceptance_date}, #{return_date}, default, #{price}, #{userid}, #{car_id})
+        insert into car_rent values (default, #{acceptance_date}, #{return_date}, default, #{price}, #{userid}, #{car_num_id})
     </insert>
-    <select id="getMemberByUserid" parameterType="String" resultType="CarRentDTO">
+    <select id="getRentIdByUserid" parameterType="String" resultType="CarRentDTO">
         select * from car_rent where userid=#{userid}
+    </select>
+    <select id="getRentList" resultType="CarRentDTO">
+        select * from car_rent order by acceptance_date;
     </select>
 </mapper>

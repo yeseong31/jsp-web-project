@@ -19,34 +19,22 @@
                     <a class="nav-link" href="<c:url value="/car/type_list"/>">차량(종류)</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<c:url value="#"/>">내 정보</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="<c:url value="#"/>">게시판</a>
                 </li>
-<%--                <li class="nav-item dropdown">--%>
-<%--                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"--%>
-<%--                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--%>
-<%--                        About--%>
-<%--                    </a>--%>
-<%--                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">--%>
-<%--                        <a class="dropdown-item" href="#">서비스</a>--%>
-<%--                        <a class="dropdown-item" href="#">위치</a>--%>
-<%--                        <a class="dropdown-item" href="#">FAQ</a>--%>
-<%--                    </div>--%>
-<%--                </li>--%>
-                <li class="nav-item">
-                    <a class="nav-link" href="<c:url value='/common/sign_in'/>">로그인</a>
-                </li>
+                <c:if test="${empty userid}">
+                    <li class="nav-item">
+                        <a class="nav-link" href="<c:url value='/common/sign_in'/>">로그인</a>
+                    </li>
+                </c:if>
+                <c:if test="${not empty userid}">
+                    <li class="nav-item">
+                        <a class="nav-link" href="<c:url value="#"/>">내 정보(${userid})</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<c:url value='/common/logout'/>">로그아웃</a>
+                    </li>
+                </c:if>
             </ul>
-<%--            <ul class="navbar-nav ml-auto">--%>
-<%--                <li class="nav-item">--%>
-<%--                    <form name="f" action="<c:url value="/common/logout"/>" method="post">--%>
-<%--                        <button class="nav-link" style="text-align: left; width: 100%; border: 0; outline: 0; background-color: #f8f9fa">로그아웃</button>--%>
-<%--                        <label><input name="${_csrf.parameterName}" value="${_csrf.token}" hidden/></label>--%>
-<%--                    </form>--%>
-<%--                </li>--%>
-<%--            </ul>--%>
             <ul class="navbar-nav" style="">
                 <li class="nav-item active">
                     <a class="nav-link" href="<c:url value="/admin/"/>">관리자 페이지</a>

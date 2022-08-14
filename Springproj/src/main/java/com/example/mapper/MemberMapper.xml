@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="member.mybatis.MemberMapper">
     <insert id="insertMember" parameterType="MemberDTO">
-        insert into member values(#{userid}, #{username}, #{password}, #{email}, #{phone}, null, 1, default, null)
+        insert into member values(#{userid}, #{username}, #{password}, #{email}, #{phone}, null, 1, default, null, default)
     </insert>
     <select id="checkMemberWithId" parameterType="String" resultType="int">
         select count(*) from member where userid=#{userid}

@@ -15,9 +15,8 @@
                 <th scope="col" class="text-center" style="width: 20%">아이디</th>
                 <th colspan="3">
                     <label style="width: 100%">
-                        <input type="text" value="${member}" readonly
-                               style="width: 100%; height: 36px; font-size: 15px; border: 1px solid #dbdbdb;
-                                    border-radius: 6px; padding: 9px 0 7px 8px; background-color: #FAFAFA">
+                        <input type="text" value="${userid}" style="width: 100%; height: 36px; font-size: 15px; border: 1px solid #dbdbdb;
+                                    border-radius: 6px; padding: 9px 0 7px 8px; background-color: #FAFAFA" readonly>
                     </label>
                 </th>
             </tr>
@@ -25,9 +24,8 @@
                 <th scope="col" class="text-center" style="width: 20%">예약번호</th>
                 <th colspan="3">
                     <label style="width: 100%">
-                        <input type="text" value="${rent.id}" readonly
-                               style="width: 100%; height: 36px; font-size: 15px; border: 1px solid #dbdbdb;
-                                    border-radius: 6px; padding: 9px 0 7px 8px; background-color: #FAFAFA">
+                        <input type="text" value="${rent.id}" style="width: 100%; height: 36px; font-size: 15px; border: 1px solid #dbdbdb;
+                                    border-radius: 6px; padding: 9px 0 7px 8px; background-color: #FAFAFA" readonly>
                     </label>
                 </th>
             </tr>
@@ -35,9 +33,8 @@
                 <th scope="col" class="text-center" style="width: 20%">차량</th>
                 <th colspan="3">
                     <label style="width: 100%">
-                        <input type="text" value="${car.name}" readonly
-                               style="width: 100%; height: 36px; font-size: 15px; border: 1px solid #dbdbdb;
-                                    border-radius: 6px; padding: 9px 0 7px 8px; background-color: #FAFAFA">
+                        <input type="text" value="${car_num.num}" style="width: 100%; height: 36px; font-size: 15px; border: 1px solid #dbdbdb;
+                                    border-radius: 6px; padding: 9px 0 7px 8px; background-color: #FAFAFA" readonly>
                     </label>
                 </th>
             </tr>
@@ -45,7 +42,7 @@
                 <th scope="col" class="text-center" style="width: 20%">대여일</th>
                 <th>
                     <label style="width: 100%">
-                        <input type="date" value="${rent.return_date}" style="width: 100%; height: 36px; font-size: 15px; border: 1px solid #dbdbdb;
+                        <input type="date" value="${rent.acceptance_date}" style="width: 100%; height: 36px; font-size: 15px; border: 1px solid #dbdbdb;
                                             border-radius: 6px; padding: 9px 0 7px 8px; background-color: #FAFAFA" readonly>
                     </label>
                 </th>
@@ -67,8 +64,5 @@
     </div>
 </section>
 <!-- Footer-->
-<footer class="py-5 bg-dark">
-    <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
-</footer>
-
+<%@ include file="../footer.jsp" %>
 <%@ include file="../bottom.jsp" %>

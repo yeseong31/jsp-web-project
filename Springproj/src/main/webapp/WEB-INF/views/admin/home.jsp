@@ -12,7 +12,7 @@
         <button type="button" class="btn btn-outline-dark"
                 onclick="location.href='/admin/car/list'">차량 관리</button>
         <button type="button" class="btn btn-outline-dark"
-                onclick="location.href='/admin/car/rent/list'" disabled>예약 관리</button>
+                onclick="location.href='/admin/car/rent/list'">예약 관리</button>
         <button type="button" class="btn btn-outline-dark"
                 onclick="location.href='#'" disabled>게시판 관리</button>
     </div>

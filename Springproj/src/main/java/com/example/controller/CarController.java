@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -70,20 +69,22 @@ public class CarController {
             req.setAttribute("getCar", dto);
             req.setAttribute("getCarNum", num);
         }
-        List<CarDTO> list = carService.getCarList();
-        List<CarNumDTO> nums = carNumService.getList();
-        req.setAttribute("getCarList", list);
-        req.setAttribute("getCarNumList", nums);
         return "car/rent";
     }
 
     @PostMapping("/rent")
     public String car_rent(HttpServletRequest req, CarRentDTO dto) {
-        // 0. 렌트를 진행하는 사용자 (제대로 된 로그인 기능을 구현하지 않아 임시로 문자열 삽입)
-        dto.setUserid("testid");
-        // 1. 해당 차량에 대해 렌트가 불가능하다면
-        log.info("--------CAR NUM DTO: " + dto);
+        // 렌트를 진행하는 사용자 (세션에 저장된 userid 확인)
+        HttpSession session = req.getSession();
+        if (session.getAttribute("userid") == null) {
+            req.setAttribute("msg", "로그인 후 이용해 주세요.");
+            req.setAttribute("url", "/common/sign_in");
+            return "message";
+        }
+        String userid = (String) session.getAttribute("userid");
+        dto.setUserid(userid);
         CarNumDTO target = carNumService.getOne(dto.getCar_num_id());
+        // 해당 차량에 대해 렌트가 불가능하다면
         if (target == null) {
             req.setAttribute("msg", "등록되지 않은 차량입니다.");
             req.setAttribute("url", "/car/rent");
@@ -94,22 +95,45 @@ public class CarController {
             req.setAttribute("url", "/car/rent");
             return "message";
         }
-
-        // 2. 대여일이 반납일보다 늦은 경우 (잘못된 날짜 입력) ... 페이지에서 유효 검사?
-
-        int res = carRentService.insert(dto);
-        if (res > 0) {
-            req.setAttribute("msg", "차량 예약 성공! 예약 확인 페이지로 이동합니다.");
-            req.setAttribute("member", "testid");
-//            req.setAttribute("rent", carRentService.getRentByUserid("testid"));
-//            req.setAttribute("car", carService.getCar(dto.getCar_id()));
-            req.setAttribute("url", "/car/rent/comp");
+        CarDTO car = carService.getCar(target.getCar());
+        // 이미 렌트가 진행 중인 차량이 있다면
+        if (carRentService.getRentByUserid(userid) != null) {
+            req.setAttribute("msg", "이미 렌트 중인 차량이 있습니다.");
+            req.setAttribute("url", "/car/rent/check");
+            return "message";
         }
-        else {
+        target.setNum(car.getName() + " - " + target.getNum());
+        if (carRentService.insert(dto) > 0) {
+            req.setAttribute("msg", "차량 예약 성공! 예약 확인 페이지로 이동합니다.");
+            req.setAttribute("url", "/car/rent/comp");
+            session.setAttribute("rent", carRentService.getRentByUserid(userid));
+            session.setAttribute("car_num", target);
+        } else {
             req.setAttribute("msg", "차량 예약 실패... 차량 예약 페이지로 이동합니다.");
             req.setAttribute("url", "/admin/car/type_list");
         }
         return "message";
+    }
+
+    @GetMapping("/rent/check")
+    public String car_rent_check(HttpServletRequest req) {
+        HttpSession session = req.getSession();
+        if (session.getAttribute("userid") == null) {
+            req.setAttribute("msg", "로그인 후 이용해 주세요.");
+            req.setAttribute("url", "/common/sign_in");
+            return "message";
+        }
+        String userid = (String) session.getAttribute("userid");
+        CarRentDTO dto = carRentService.getRentByUserid(userid);
+        log.info("-----> " + dto);
+        CarNumDTO target = carNumService.getOne(dto.getCar_num_id());
+        log.info("-----> " + target);
+        CarDTO car = carService.getCar(target.getCar());
+        log.info("-----> " + car);
+        target.setNum(car.getName() + " - " + target.getNum());
+        req.setAttribute("rent", carRentService.getRentByUserid(userid));
+        req.setAttribute("car_num", target);
+        return "car/rent_complete";
     }
 
     @GetMapping("/rent/comp")

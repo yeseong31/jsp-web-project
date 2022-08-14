@@ -2,8 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- list.jsp -->
 <%@ include file="../top.jsp" %>
-
-<!-- Header-->
 <%@ include file="../header.jsp" %>
 <!-- Section-->
 <section class="py-5">
@@ -34,8 +32,8 @@
                                 <div class="text-center">
                                     <a class="btn btn-outline-dark mt-auto btn-sm"
                                        href="<c:url value="/car/detail?id=${dto.id}"/>">옵션 보기</a>
-                                    <a class="btn btn-outline-primary mt-auto btn-sm"
-                                       href="<c:url value="/car/rent?id=${dto.id}"/>">예약하기</a>
+<%--                                    <a class="btn btn-outline-primary mt-auto btn-sm"--%>
+<%--                                       href="<c:url value="/car/rent?id=${dto.id}"/>">예약하기</a>--%>
                                 </div>
                             </div>
                         </div>
@@ -80,9 +78,5 @@
     </div>
 </section>
 <!-- Footer-->
-<footer class="py-5 bg-dark">
-    <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
-</footer>
-
-
+<%@ include file="../footer.jsp" %>
 <%@ include file="../bottom.jsp" %>

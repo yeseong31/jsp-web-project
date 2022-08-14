@@ -20,10 +20,11 @@ public class CarRentServiceImpl implements CarRentService {
 
     @Override
     public CarRentDTO getRentByUserid(String userid) {
-        List<CarRentDTO> list =  sqlSession.selectOne("getMemberByUserid", userid);
-        if (list.size() > 0)
-            return list.get(0);
-        return null;
+        return sqlSession.selectOne("getRentIdByUserid", userid);
     }
 
+    @Override
+    public List<CarRentDTO> getList() {
+        return sqlSession.selectList("getRentList");
+    }
 }

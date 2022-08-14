@@ -2,6 +2,7 @@ package com.example.controller;
 
 import com.example.dto.MemberDTO;
 import com.example.service.MemberService;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -12,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/common")
+@Log4j2
 public class CommonController {
     @Autowired
     MemberService memberService;
@@ -41,6 +44,7 @@ public class CommonController {
         // 로그인 진행 (추후 로직 변경 예정)
         req.setAttribute("url", "/");
         req.setAttribute("msg", "로그인 성공");
+        req.getSession().setAttribute("userid", dto.getUserid());
         return "message";
     }
 
@@ -76,6 +80,12 @@ public class CommonController {
     }
 
     @GetMapping("/logout")
-    public void logout() {}
+    public String logout(HttpServletRequest req) {
+        HttpSession session = req.getSession();
+        session.removeAttribute("userid");
+        req.setAttribute("msg", "로그아웃 완료");
+        req.setAttribute("url", "/");
+        return "message";
+    }
 
 }
