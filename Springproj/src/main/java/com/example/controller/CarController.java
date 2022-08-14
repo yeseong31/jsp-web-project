@@ -1,9 +1,6 @@
 package com.example.controller;
 
-import com.example.dto.CarDTO;
-import com.example.dto.CarImageDTO;
-import com.example.dto.CarRentDTO;
-import com.example.dto.CarTypeDTO;
+import com.example.dto.*;
 import com.example.service.*;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,15 +30,19 @@ public class CarController {
     CarRentService carRentService;
     @Autowired
     MemberService memberService;
+    @Autowired
+    CarNumService carNumService;
 
     @RequestMapping("/detail")
     public String car_detail(HttpServletRequest req, int id) {
         CarDTO car = carService.getCar(id);
-        CarTypeDTO type = carTypeService.getCarType(String.valueOf(car.getCar_type()));
+        CarTypeDTO type = carTypeService.getCarType(String.valueOf(car.getType()));
         List<CarImageDTO> img_list = carImageService.getImageList(id);
+        List<CarNumDTO> nums = carNumService.getList(id);
         req.setAttribute("getCar", car);
         req.setAttribute("getCarType", type);
         req.setAttribute("getCarImageList", img_list);
+        req.setAttribute("getCarNumList", nums);
         return "car/detail";
     }
 
@@ -64,11 +65,15 @@ public class CarController {
     @GetMapping("/rent")
     public String car_rent(HttpServletRequest req, @RequestParam(required = false) String id) {
         if (id != null) {
-            CarDTO dto = carService.getCar(Integer.parseInt(id));
+            CarNumDTO num = carNumService.getOne(Integer.parseInt(id));
+            CarDTO dto = carService.getCar(num.getCar());
             req.setAttribute("getCar", dto);
+            req.setAttribute("getCarNum", num);
         }
         List<CarDTO> list = carService.getCarList();
+        List<CarNumDTO> nums = carNumService.getList();
         req.setAttribute("getCarList", list);
+        req.setAttribute("getCarNumList", nums);
         return "car/rent";
     }
 
@@ -76,14 +81,21 @@ public class CarController {
     public String car_rent(HttpServletRequest req, CarRentDTO dto) {
         // 0. 렌트를 진행하는 사용자 (제대로 된 로그인 기능을 구현하지 않아 임시로 문자열 삽입)
         dto.setUserid("testid");
-        // 1. 해당 사용자에 대해 렌트 중인 자동차가 존재하는지 확인
+        // 1. 해당 차량에 대해 렌트가 불가능하다면
+        log.info("--------CAR NUM DTO: " + dto);
+        CarNumDTO target = carNumService.getOne(dto.getCar_num_id());
+        if (target == null) {
+            req.setAttribute("msg", "등록되지 않은 차량입니다.");
+            req.setAttribute("url", "/car/rent");
+            return "message";
+        }
+        if (!target.getIs_available()) {
+            req.setAttribute("msg", "다른 사용자에 의해 렌트가 진행된 차량입니다.");
+            req.setAttribute("url", "/car/rent");
+            return "message";
+        }
 
-        // 있다면 해당 차량에 대한 '예약 확인' 페이지로 이동
-
-        // 2. 해당 차량이 이미 '렌트' 완료된 차량이라면 예약을 진행하지 않음
-
-        // 3. 대여일이 반납일보다 늦은 경우 (잘못된 날짜 입력) ... 페이지에서 유효 검사?
-
+        // 2. 대여일이 반납일보다 늦은 경우 (잘못된 날짜 입력) ... 페이지에서 유효 검사?
 
         int res = carRentService.insert(dto);
         if (res > 0) {

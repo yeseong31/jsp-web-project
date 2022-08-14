@@ -19,8 +19,8 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public List<CarDTO> getCarListByCarType(int car_type) {
-        return sqlSession.selectList("getCarListByCarType", car_type);
+    public List<CarDTO> getCarListByCarType(int type) {
+        return sqlSession.selectList("getCarListByCarType", type);
     }
 
     @Override

@@ -41,33 +41,25 @@
                 <tr>
                     <th scope="col" class="text-center" style="width: 20%">차량</th>
                     <th>
-                        <label for="car_id">
-                        </label><select id="car_id" name="car_id"
-                                        style="width: 100%; height: 36px; font-size: 15px; border: 1px solid #dbdbdb;
-                                                border-radius: 6px; padding: 9px 0 7px 8px; background-color: #FAFAFA;">
-                        <c:if test="${empty getCar}">
-                            <option value="" selected>---</option>
-                        </c:if>
-                        <c:if test="${not empty getCarList}">
-                            <c:forEach var="dto" items="${getCarList}">
-                                <c:if test="${getCar.id eq dto.id}">
-                                    <option value="${dto.id}" selected>${dto.name} (${dto.code})</option>
+                        <label style="width: 100%">
+                        <input type="text" id="test" name="test" style="width: 100%; height: 36px; font-size: 15px; border: 1px solid #dbdbdb;
+                                        border-radius: 6px; padding: 9px 0 7px 8px; background-color: #FAFAFA" disabled
+                                <c:if test="${empty getCar}">
+                                    value="" placeholder="'차량 둘러보기'로 차량을 먼저 선택해 주세요!"></label>
+                                    <label><input name="car_num_id" value="" hidden></label>
                                 </c:if>
-                                <c:if test="${getCar.id ne dto.id}">
-                                    <option value="${dto.id}">${dto.name} (${dto.code})</option>
+                                <c:if test="${not empty getCar}">
+                                    value="${getCar.name} - ${getCarNum.num}"></label>
+                                    <label><input name="car_num_id" value="${getCarNum.id}" hidden></label>
                                 </c:if>
-                            </c:forEach>
-                        </c:if>
-                    </select>
                     </th>
                 </tr>
                 </tbody>
             </table>
             <!-- 예약 확인 -->
             <div class="text-center">
-                <a class="btn btn-outline-secondary mt-auto btn-lg" href="<c:url value="/"/>">둘러보기</a>
-                <a class="btn btn-outline-dark mt-auto btn-lg" href="#">예약 확인</a>
-                <button class="btn btn-outline-danger mt-auto btn-lg" type="submit">빠른 예약</button>
+                <a class="btn btn-outline-secondary mt-auto btn-lg" href="<c:url value="/"/>">차량 둘러보기</a>
+                <button class="btn btn-outline-danger mt-auto btn-lg" type="submit">예약 진행</button>
             </div>
         </form>
     </div>
@@ -89,21 +81,22 @@
             f.return_date.focus()
             return false;
         }
-        if (f.car_id.value===""){
+        if (f.car_num_id.value===""){
             alert("대여할 차량을 선택하세요")
-            f.car_id.focus()
+            f.car_num_id.focus()
             return false;
         }
         return true;
     }
-
-    const acceptance_date = document.getElementById("acceptance_date");
-    const return_date = document.getElementById("return_date");
-    acceptance_date.min = new Date().toISOString().substring(0, 10);
-    return_date.min = new Date().toISOString().substring(0, 10);
-
+    (function() {
+        let target_date = new Date().toISOString().substring(0, 10);
+        document.getElementById("acceptance_date").value = target_date;
+        document.getElementById("acceptance_date").min = target_date;
+        document.getElementById("return_date").value = target_date;
+        document.getElementById("return_date").min = target_date;
+    })();
     function setReturnDate() {
-        return_date.min = acceptance_date.value;
+        document.getElementById("return_date").min = document.getElementById("acceptance_date").value;
     }
 </script>
 

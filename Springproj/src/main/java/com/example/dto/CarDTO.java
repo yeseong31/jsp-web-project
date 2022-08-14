@@ -15,7 +15,8 @@ public class CarDTO {
     private Date reg_date;
     private Date mod_date;
 
-    private int car_type;
+    private int type;
+    private int cnt;
 
     public int getId() {
         return id;
@@ -105,11 +106,19 @@ public class CarDTO {
         this.mod_date = mod_date;
     }
 
-    public int getCar_type() {
-        return car_type;
+    public int getType() {
+        return type;
     }
 
-    public void setCar_type(int car_type) {
-        this.car_type = car_type;
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public int getCnt() {
+        return cnt;
+    }
+
+    public void setCnt(int cnt) {
+        this.cnt = cnt;
     }
 }

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="car_num.mybatis.CarNumMapper">
+    <select id="getList" resultType="CarNumDTO">
+        select * from car_num
+    </select>
+    <select id="getListWithCarId" resultType="CarNumDTO">
+        select * from car_num where car=#{car}
+    </select>
+    <select id="getOne" parameterType="int" resultType="CarNumDTO">
+        select * from car_num where id=#{car_num_id}
+    </select>
+</mapper>

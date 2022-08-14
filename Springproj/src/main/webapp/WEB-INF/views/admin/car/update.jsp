@@ -90,15 +90,15 @@
                     <tr>
                         <th scope="col" class="text-center">차량 종류</th>
                         <th>
-                            <label for="car_type">
-                            </label><select id="car_type" name="car_type"
+                            <label for="type">
+                            </label><select id="type" name="type"
                                     style="width: 100%; height: 36px; font-size: 15px; border: 1px solid #dbdbdb;
                                             border-radius: 6px; padding: 9px 0 7px 8px; background-color: #FAFAFA;">
                                 <c:forEach var="dto" items="${getCarTypeList}">
-                                    <c:if test="${getCar.car_type eq dto.id}">
+                                    <c:if test="${getCar.type eq dto.id}">
                                         <option value="${dto.id}" selected>${dto.name} (${dto.code})</option>
                                     </c:if>
-                                    <c:if test="${getCar.car_type ne dto.id}">
+                                    <c:if test="${getCar.type ne dto.id}">
                                         <option value="${dto.id}">${dto.name} (${dto.code})</option>
                                     </c:if>
                                 </c:forEach>

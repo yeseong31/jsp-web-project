@@ -97,8 +97,8 @@
                     <tr>
                         <th scope="col" class="text-center">차량 종류</th>
                         <th>
-                            <label for="car_type">
-                            </label><select id="car_type" name="car_type" style="width: 100%; height: 36px; font-size: 15px; border: 1px solid #dbdbdb;
+                            <label for="type">
+                            </label><select id="type" name="type" style="width: 100%; height: 36px; font-size: 15px; border: 1px solid #dbdbdb;
                                             border-radius: 6px; padding: 9px 0 7px 8px; background-color: #FAFAFA;">
                                 <option value="">---</option>
                                 <c:forEach var="dto" items="${getCarTypeList}">
@@ -164,9 +164,9 @@
             f.transmission.focus()
             return false;
         }
-        if (f.car_type.value===""){
+        if (f.type.value===""){
             alert("차량 종류를 입력하세요")
-            f.car_type.focus()
+            f.type.focus()
             return false;
         }
         return true;

@@ -107,7 +107,7 @@ public class AdminCarController {
     @RequestMapping("/detail")
     public String admin_car_detail(HttpServletRequest req, int id) {
         CarDTO car = carService.getCar(id);
-        CarTypeDTO type = carTypeService.getCarType(String.valueOf(car.getCar_type()));
+        CarTypeDTO type = carTypeService.getCarType(String.valueOf(car.getType()));
         req.setAttribute("getCar", car);
         req.setAttribute("getCarType", type);
         return "admin/car/detail";

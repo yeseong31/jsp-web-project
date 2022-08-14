@@ -89,7 +89,7 @@
                     <th scope="col" class="text-center">차량 종류</th>
                     <th>
                         <label style="width: 100%">
-                            <input type="text" name="car_type" value=" ${getCarType.name} (${getCarType.code})" style="width: 100%; height: 36px; font-size: 15px; border: 1px solid #dbdbdb;
+                            <input type="text" name="type" value=" ${getCarType.name} (${getCarType.code})" style="width: 100%; height: 36px; font-size: 15px; border: 1px solid #dbdbdb;
                                     border-radius: 6px; padding: 9px 0 7px 8px; background-color: #FAFAFA;" readonly>
                         </label>
                     </th>

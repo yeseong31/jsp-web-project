@@ -13,10 +13,16 @@
                     <a class="nav-link" href="<c:url value="/"/>">홈으로</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<c:url value="/car/rent"/>">예약하기</a>
+                    <a class="nav-link" href="<c:url value="/car/rent"/>">예약</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<c:url value="/car/type_list"/>">차량 종류</a>
+                    <a class="nav-link" href="<c:url value="/car/type_list"/>">차량(종류)</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<c:url value="#"/>">내 정보</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<c:url value="#"/>">게시판</a>
                 </li>
 <%--                <li class="nav-item dropdown">--%>
 <%--                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"--%>

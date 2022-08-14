@@ -7,7 +7,7 @@ import java.util.List;
 public interface CarService {
     List<CarDTO> getCarList();
 
-    List<CarDTO> getCarListByCarType(int car_type);
+    List<CarDTO> getCarListByCarType(int type);
 
     CarDTO getCar(int id);
 

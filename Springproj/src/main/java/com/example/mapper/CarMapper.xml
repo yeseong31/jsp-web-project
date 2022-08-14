@@ -8,7 +8,7 @@
     </select>
     <insert id="insertCar" parameterType="CarDTO">
         insert into CAR values (default, #{name}, #{code}, #{description}, #{price},
-                                #{passenger}, #{luggage}, #{door}, #{transmission}, default, null, #{car_type})
+                                #{passenger}, #{luggage}, #{door}, #{transmission}, default, null, #{type}, default)
     </insert>
     <select id="getCar" parameterType="int" resultType="CarDTO">
         select * from CAR where id = #{id}
@@ -17,12 +17,12 @@
         select id from CAR where code = #{code}
     </select>
     <select id="getCarListByCarType" resultType="CarDTO">
-        select * from CAR where car_type = #{car_type}
+        select * from CAR where type = #{type}
     </select>
     <update id="updateCar" parameterType="CarDTO">
         update CAR set name=#{name}, code=#{code}, description=#{description}, price=#{price},
                        passenger=#{passenger}, luggage=#{luggage}, door=#{door},
-                       transmission=#{transmission}, mod_date=now(), car_type=#{car_type} where id=#{id}
+                       transmission=#{transmission}, mod_date=now(), cnt=#{cnt}, type=#{type} where id=#{id}
     </update>
     <delete id="deleteCar" parameterType="int">
         delete from CAR where id=#{id}
