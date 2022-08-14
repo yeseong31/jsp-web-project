@@ -20,5 +20,6 @@ public class MemberDTO {
     private LocalDateTime last_login;
     private LocalDateTime reg_date;
     private LocalDateTime mod_date;
+    private Boolean is_admin;
 
 }

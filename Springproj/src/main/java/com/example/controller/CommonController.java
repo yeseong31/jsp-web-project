@@ -68,7 +68,11 @@ public class CommonController {
             return "message";
         }
         // 회원가입 진행
-        int res = memberService.insertMember(dto);
+        int res;
+        if (dto.getIs_admin() == null)
+            res = memberService.insertMember(dto);
+        else
+            res = memberService.insertAdmin(dto);
         if (res > 0) {
             req.setAttribute("msg", "회원가입 성공! 로그인 페이지로 이동합니다.");
             req.setAttribute("url", "/common/sign_in");

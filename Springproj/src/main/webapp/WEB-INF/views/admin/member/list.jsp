@@ -24,12 +24,12 @@
                 </c:if>
                 <c:forEach var="dto" items="${getMemberList}">
                     <tr>
-                        <td style="padding-left: 30px"><a href="#">${dto.userid}</a></td>
+                        <td style="padding-left: 30px"><a href="<c:url value="/admin/member/detail?userid=${dto.userid}"/>">${dto.userid}</a></td>
                         <td style="padding-left: 30px">${dto.username}</td>
                         <td style="padding-left: 30px">${dto.email}</td>
                         <td class="text-center">
                             <button class="btn btn-outline-danger flex-shrink-0 btn-sm" type="button"
-                                    style="margin-right: 5px" onclick="location.href='#'">삭제</button>
+                                    style="margin-right: 5px" onclick="location.href='/admin/member/delete?userid=${dto.userid}'">삭제</button>
                         </td>
                     </tr>
                 </c:forEach>
@@ -37,7 +37,7 @@
             </table>
         </div>
         <button type="button" class="btn btn-outline-dark" onclick="location.href='/admin/'">관리자 홈</button>
-        <button type="button" class="btn btn-outline-dark" onclick="location.href='#'">등록</button>
+        <button type="button" class="btn btn-outline-dark" onclick="location.href='/admin/member/insert'">등록</button>
     </div>
 </section>
 

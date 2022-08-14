@@ -16,7 +16,7 @@
                         <th scope="col" class="text-center" style="width: 150px">이름</th>
                         <th>
                             <label style="width: 100%">
-                                <input type="text" name="name" placeholder="이름을 입력하세요"
+                                <input type="text" name="name" placeholdaer="이름을 입력하세요"
                                        style="width: 100%; height: 36px; font-size: 15px; border: 1px solid #dbdbdb;
                                         border-radius: 6px; padding: 9px 0 7px 8px; background-color: #FAFAFA;">
                             </label>

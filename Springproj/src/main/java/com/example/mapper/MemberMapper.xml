@@ -6,17 +6,26 @@
     <insert id="insertMember" parameterType="MemberDTO">
         insert into member values(#{userid}, #{username}, #{password}, #{email}, #{phone}, null, 1, default, null, default)
     </insert>
+    <insert id="insertAdmin" parameterType="MemberDTO">
+        insert into member values(#{userid}, #{username}, #{password}, #{email}, #{phone}, null, 1, default, null, #{is_admin})
+    </insert>
     <select id="checkMemberWithId" parameterType="String" resultType="int">
         select count(*) from member where userid=#{userid}
     </select>
     <select id="checkMemberWithEmail" parameterType="String" resultType="int">
         select count(*) from member where email=#{email}
     </select>
+    <select id="getMember" parameterType="String" resultType="MemberDTO">
+        select * from member where userid=#{userid}
+    </select>
+    <update id="updateMember" parameterType="MemberDTO">
+        update member set username=#{username}, email=#{email}, phone=#{phone}, is_admin=#{is_admin} where userid=#{userid}
+    </update>
     <select id="getMemberPassword" parameterType="String" resultType="String">
         select password from member where userid=#{userid}
     </select>
     <select id="getMemberList" resultType="MemberDTO">
-        select * from member order by reg_date
+        select * from member order by reg_date desc;
     </select>
 
     <resultMap id="memberMap" type="MemberDTO">

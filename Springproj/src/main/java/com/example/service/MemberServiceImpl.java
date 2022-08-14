@@ -18,6 +18,11 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
+    public int insertAdmin(MemberDTO dto) {
+        return sqlSession.insert("insertAdmin", dto);
+    }
+
+    @Override
     public int checkMemberId(String userid) {
         return sqlSession.selectOne("checkMemberWithId", userid);
     }
@@ -28,6 +33,11 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
+    public MemberDTO getMember(String userid) {
+        return sqlSession.selectOne("getMember", userid);
+    }
+
+    @Override
     public String getMemberPassword(String userid) {
         return sqlSession.selectOne("getMemberPassword", userid);
     }
@@ -35,6 +45,11 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public List<MemberDTO> getMemberList() {
         return sqlSession.selectList("getMemberList");
+    }
+
+    @Override
+    public int updateMember(MemberDTO dto) {
+        return sqlSession.update("updateMember", dto);
     }
 
     @Override
