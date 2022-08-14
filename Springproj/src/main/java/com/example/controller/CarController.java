@@ -125,11 +125,8 @@ public class CarController {
         }
         String userid = (String) session.getAttribute("userid");
         CarRentDTO dto = carRentService.getRentByUserid(userid);
-        log.info("-----> " + dto);
         CarNumDTO target = carNumService.getOne(dto.getCar_num_id());
-        log.info("-----> " + target);
         CarDTO car = carService.getCar(target.getCar());
-        log.info("-----> " + car);
         target.setNum(car.getName() + " - " + target.getNum());
         req.setAttribute("rent", carRentService.getRentByUserid(userid));
         req.setAttribute("car_num", target);

@@ -28,7 +28,12 @@
                         <td class="text-center">${dto.id}</td>
                         <td style="padding-left: 30px"><a href="#">${dto.userid}</a></td>
                         <td class="text-center">${dto.acceptance_date}</td>
-                        <td class="text-center">${dto.is_return}</td>
+                        <c:if test="${dto.is_return == 0}">
+                            <td class="text-center">미완료</td>
+                        </c:if>
+                        <c:if test="${dto.is_return == 1}">
+                            <td class="text-center">완료</td>
+                        </c:if>
                         <td class="text-center">
                             <button type="button" class="btn btn-outline-secondary btn-sm"
                                     onclick="location.href='#'">수정</button>
