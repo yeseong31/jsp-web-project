@@ -91,5 +91,4 @@ public class CommonController {
         req.setAttribute("url", "/");
         return "message";
     }
-
 }

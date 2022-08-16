@@ -14,7 +14,6 @@ import java.util.List;
 @Controller
 @RequestMapping("/admin/member")
 public class AdminMemberController {
-
     @Autowired
     MemberService memberService;
 
@@ -36,5 +35,4 @@ public class AdminMemberController {
         req.setAttribute("dto", dto);
         return "admin/member/detail";
     }
-
 }

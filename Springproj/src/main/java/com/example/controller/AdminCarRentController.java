@@ -13,7 +13,6 @@ import java.util.List;
 @Controller
 @RequestMapping("/admin/car/rent")
 public class AdminCarRentController {
-
     @Autowired
     CarRentService carRentService;
 
@@ -23,5 +22,4 @@ public class AdminCarRentController {
         req.setAttribute("list", list);
         return "admin/rent/list";
     }
-
 }

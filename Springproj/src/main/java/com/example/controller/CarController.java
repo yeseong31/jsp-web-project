@@ -18,7 +18,6 @@ import java.util.List;
 @RequestMapping("/car")
 @Log4j2
 public class CarController {
-
     @Autowired
     CarService carService;
     @Autowired
@@ -32,7 +31,7 @@ public class CarController {
     @Autowired
     CarNumService carNumService;
 
-    @RequestMapping("/detail")
+    @GetMapping("/detail")
     public String car_detail(HttpServletRequest req, int id) {
         CarDTO car = carService.getCar(id);
         CarTypeDTO type = carTypeService.getCarType(String.valueOf(car.getType()));
@@ -45,14 +44,14 @@ public class CarController {
         return "car/detail";
     }
 
-    @RequestMapping("/type_list")
+    @GetMapping("/type_list")
     public String car_type_list(HttpServletRequest req) {
         List<CarTypeDTO> list = carTypeService.getCarTypeList();
         req.setAttribute("getCarTypeList", list);
         return "car/type_list";
     }
 
-    @RequestMapping("/type_detail")
+    @GetMapping("/type_detail")
     public String car_type_detail(HttpServletRequest req, String id) {
         CarTypeDTO dto = carTypeService.getCarType(id);
         List<CarDTO> list = carService.getCarListByCarType(dto.getId());
@@ -137,5 +136,4 @@ public class CarController {
     public String car_rent_complete() {
         return "car/rent_complete";
     }
-
 }

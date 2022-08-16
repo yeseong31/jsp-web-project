@@ -7,9 +7,9 @@ import com.example.service.CarService;
 import com.example.service.CarTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -25,7 +25,6 @@ import java.util.UUID;
 @Controller
 @RequestMapping("/admin/car")
 public class AdminCarController {
-
     @Autowired
     CarTypeService carTypeService;
     @Autowired
@@ -36,14 +35,14 @@ public class AdminCarController {
     @Resource(name = "uploadPath")
     private String uploadPath;
 
-    @RequestMapping("/list")
+    @GetMapping("/list")
     public String admin_car(HttpServletRequest req) {
         List<CarDTO> list = carService.getCarList();
         req.setAttribute("getCarList", list);
         return "admin/car/list";
     }
 
-    @RequestMapping("/detail")
+    @GetMapping("/detail")
     public String admin_car_detail(HttpServletRequest req, int id) {
         CarDTO car = carService.getCar(id);
         CarTypeDTO type = carTypeService.getCarType(String.valueOf(car.getType()));
@@ -52,7 +51,7 @@ public class AdminCarController {
         return "admin/car/detail";
     }
 
-    @RequestMapping(value = "/write", method = RequestMethod.GET)
+    @GetMapping("/write")
     public String admin_car_write(HttpServletRequest req) {
         List<CarTypeDTO> list = carTypeService.getCarTypeList();
         req.setAttribute("getCarTypeList", list);
@@ -86,8 +85,8 @@ public class AdminCarController {
         return 1;
     }
 
-    @RequestMapping(value = "/write", method = RequestMethod.POST)
-    public String admin_car_write_pro(HttpServletRequest req, CarDTO dto) {
+    @PostMapping("/write")
+    public String admin_car_write(HttpServletRequest req, CarDTO dto) {
         // 차량 정보 저장
         if (carService.insertCar(dto) <= 0) {
             req.setAttribute("msg", "차량 등록 실패... 차량 목록 페이지로 이동합니다.");
@@ -103,7 +102,7 @@ public class AdminCarController {
         return "message";
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.GET)
+    @GetMapping("/update")
     public String admin_car_update(HttpServletRequest req, int id) {
         CarDTO dto = carService.getCar(id);
         List<CarTypeDTO> list = carTypeService.getCarTypeList();
@@ -112,8 +111,8 @@ public class AdminCarController {
         return "admin/car/update";
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public String admin_car_update_pro(HttpServletRequest req, CarDTO dto) {
+    @PostMapping("/update")
+    public String admin_car_update(HttpServletRequest req, CarDTO dto) {
         // 차량 정보 수정
         if (carService.updateCar(dto) <= 0)
             req.setAttribute("msg", "차량 수정 실패... 차량 상세 페이지로 이동합니다.");
@@ -126,7 +125,7 @@ public class AdminCarController {
         return "message";
     }
 
-    @RequestMapping("/delete")
+    @GetMapping("/delete")
     public String admin_car_delete(HttpServletRequest req, int id) {
         MultipartHttpServletRequest mr = (MultipartHttpServletRequest) req;
         MultipartFile file = mr.getFile("filename");
@@ -150,5 +149,4 @@ public class AdminCarController {
         }
         return "message";
     }
-
 }
