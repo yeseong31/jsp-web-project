@@ -127,18 +127,6 @@ public class AdminCarController {
 
     @GetMapping("/delete")
     public String admin_car_delete(HttpServletRequest req, int id) {
-        MultipartHttpServletRequest mr = (MultipartHttpServletRequest) req;
-        MultipartFile file = mr.getFile("filename");
-        Calendar cal = Calendar.getInstance();
-        String dateString = String.format("%04d/%02d/%02d/",
-                cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH));
-
-        String filename = dateString + Objects.requireNonNull(file).getOriginalFilename();
-        File target = new File(uploadPath, Objects.requireNonNull(filename));
-        try {
-            file.transferTo(target);
-        } catch (IOException ignored) {}
-
         int res = carService.deleteCar(id);
         if (res > 0) {
             req.setAttribute("msg", "차량 삭제 성공! 차량 목록 페이지로 이동합니다.");

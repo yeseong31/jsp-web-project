@@ -44,22 +44,6 @@ public class CarController {
         return "car/detail";
     }
 
-    @GetMapping("/type_list")
-    public String car_type_list(HttpServletRequest req) {
-        List<CarTypeDTO> list = carTypeService.getCarTypeList();
-        req.setAttribute("getCarTypeList", list);
-        return "car/type_list";
-    }
-
-    @GetMapping("/type_detail")
-    public String car_type_detail(HttpServletRequest req, String id) {
-        CarTypeDTO dto = carTypeService.getCarType(id);
-        List<CarDTO> list = carService.getCarListByCarType(dto.getId());
-        req.setAttribute("getCarType", dto);
-        req.setAttribute("getCarList", list);
-        return "car/type_detail";
-    }
-
     @GetMapping("/rent")
     public String car_rent(HttpServletRequest req, @RequestParam(required = false) String id) {
         if (id != null) {

@@ -13,8 +13,13 @@
             </div>
             <div class="col-md-6">
                 <!-- 상품코드 -->
-                <div class="small mb-1">차량: ${getCar.code}</div>
-                <div class="small mb-1">차종: <a href="<c:url value="/car/type_detail?id=${getCarType.id}"/>">${getCarType.name}</a></div>
+                <div class="small mb-1">차량 코드: ${getCar.code}</div>
+                <div class="small mb-1">차량 종류:
+                    <button type="button" class="btn btn-dark btn-sm"
+                            style="padding: 0 5px; font-size: 11px" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        ${getCarType.name}
+                    </button>
+                </div><br>
                 <!-- 상품이름 -->
                 <h1 class="display-5 fw-bolder">${getCar.name}</h1>
                 <!-- 상품가격 -->
@@ -34,8 +39,6 @@
                 <div class="d-flex">
                     <button class="btn btn-outline-dark flex-shrink-0" type="button"
                             style="margin-right: 5px" onclick="location.href='/'">목록으로 돌아가기</button>
-<%--                    <button class="btn btn-outline-danger flex-shrink-0" type="button"--%>
-<%--                            style="margin-right: 5px" onclick="location.href='/car/rent?id=${getCar.id}'">예약하기</button>--%>
                 </div>
             </div>
         </div>
@@ -80,6 +83,32 @@
         </div>
     </div>
 </section>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">${getCarType.name} 상세 설명</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Product image-->
+                <img class="card-img-top" src="https://picsum.photos/seed/${getCarType.id}/450/300" alt="..." />
+                <!-- Product details-->
+                <div class="card-body p-4">
+                    <div>
+                        <!-- Product description -->
+                        ${getCarType.description}
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- Footer-->
 <%@ include file="../footer.jsp" %>
 <%@ include file="../bottom.jsp" %>

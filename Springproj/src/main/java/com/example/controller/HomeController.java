@@ -16,7 +16,7 @@ public class HomeController {
     @Autowired
     CarService carService;
 
-    @GetMapping("/admin/")
+    @GetMapping("/admin")
     public String admin_home() {
         return "admin/home";
     }

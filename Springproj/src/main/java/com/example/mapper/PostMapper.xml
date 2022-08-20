@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="post.mybatis.PostMapper">
+    <select id="getPostList" resultType="PostDTO">
+        select * from post order by id desc
+    </select>
+    <select id="getPostListWithCategory" parameterType="int" resultType="PostDTO">
+        select * from post where category=#{category}
+    </select>
+    <insert id="insertPost" parameterType="PostDTO">
+        insert into post values(default, #{title}, #{content}, default, default, #{hook_text}, #{author}, #{category})
+    </insert>
+    <select id="getPost" parameterType="int" resultType="PostDTO">
+        select * from post where id=#{id}
+    </select>
+    <update id="updatePost" parameterType="PostDTO">
+        update post set title=#{title}, hook_text=#{hook_text}, content=#{content},
+                        category=#{category}, update_at=now() where id=#{id}
+    </update>
+    <delete id="deletePost" parameterType="int">
+        delete from post where id=#{id}
+    </delete>
+</mapper>

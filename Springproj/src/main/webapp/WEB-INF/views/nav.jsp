@@ -16,10 +16,7 @@
                     <a class="nav-link" href="<c:url value="/car/rent"/>">예약</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<c:url value="/car/type_list"/>">차량(종류)</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<c:url value="#"/>">게시판</a>
+                    <a class="nav-link" href="<c:url value="/blog"/>">게시판</a>
                 </li>
                 <c:if test="${empty userid}">
                     <li class="nav-item">

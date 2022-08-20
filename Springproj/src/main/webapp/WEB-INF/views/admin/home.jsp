@@ -14,7 +14,7 @@
         <button type="button" class="btn btn-outline-dark"
                 onclick="location.href='/admin/car/rent/list'">예약 관리</button>
         <button type="button" class="btn btn-outline-dark"
-                onclick="location.href='#'" disabled>게시판 관리</button>
+                onclick="location.href='/admin/blog'">게시판 관리</button>
     </div>
 </section>
 <%@ include file="../bottom.jsp" %>
