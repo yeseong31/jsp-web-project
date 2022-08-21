@@ -75,11 +75,10 @@
                                             </div>
                                             <!-- 본인의 답글인 경우 수정 / 삭제 -->
                                             <c:if test="${not empty userid and userid eq comment.author}">
-                                                <button type="button" class="btn bg-white btn-outline-dark text-dark text-start"
-                                                        style="padding: 0 4px; font-size: 10px"
-                                                        data-bs-toggle="modal" data-bs-target="#exampleModal">수정</button>
-                                                <button type="button" class="btn bg-white btn-outline-danger text-danger text-start"
-                                                        style="padding: 0 4px; font-size: 10px" onclick="location.href='/blog/comment_delete?post=${comment.post}&id=${comment.id}'">삭제</button>
+                                                <button type="button" class="btn btn-outline-dark text-start"
+                                                        style="padding: 0 4px; font-size: 10px" onclick="location.href='/blog/comment_update?&id=${comment.id}'">수정</button>
+                                                <button type="button" class="btn btn-outline-danger text-start"
+                                                        style="padding: 0 4px; font-size: 10px" onclick="location.href='/blog/comment_delete?id=${comment.id}'">삭제</button>
                                             </c:if>
                                         </div>
                                         ${comment.content}<br>
@@ -94,34 +93,6 @@
         <div class="col-md-4 col-lg-3">
             <!-- Search Widget -->
             <%@ include file="category_widget.jsp" %>
-        </div>
-    </div>
-</div>
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">답글 수정</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <!-- Comment Content -->
-                <div class="card-body p-4">
-                    <div>
-                        <!-- Product description -->
-                        <label for="my-modal-content"></label>
-                        <textarea id="my-modal-content" name="content" class="form-control"
-                                  style="font-size: 15px; margin-top: -24px;
-                                        border: 1px solid #dbdbdb; border-radius: 6px; padding: 9px 8px 7px 8px;
-                                        background-color: #FAFAFA; resize: none"
-                                  onkeydown="resize(this)" onkeyup="resize(this)"></textarea>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-            </div>
         </div>
     </div>
 </div>
