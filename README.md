@@ -1,5 +1,6 @@
 # jsp-spring-project
 - JSP를 활용한 MVC 및 Spring 프로젝트
+- SpringProj: 렌트카/게시판 홈페이지
 
 ## 🛠️ Language & Tools  🛠️
 ![Spring](https://img.shields.io/badge/Spring-6DB33F.svg?style=flat-square&logo=Spring&logoColor=white)
