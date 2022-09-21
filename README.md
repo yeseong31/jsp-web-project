@@ -9,7 +9,7 @@
 ![Apache Maven](https://img.shields.io/badge/Apache%20Maven-C71A36.svg?style=flat-square&logo=Apache-Maven&logoColor=white)
 
 ## 🏠 Home Page Layout 🏠
-(추가 예정)
+<img width="1280" alt="image" src="https://user-images.githubusercontent.com/66625672/191492889-47cbcefb-a49b-41ad-ba04-0528f38fbaaa.png">
 
 ## 💾 Databases 💾
 <img width="962" alt="image" src="https://user-images.githubusercontent.com/66625672/183249772-b6c7de62-a991-49a0-8f82-c36f0736e517.png">
